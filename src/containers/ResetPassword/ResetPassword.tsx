@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Card from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
@@ -12,7 +12,6 @@ import SendStep from "./SendStep";
 import VerifyEmailState from "./VerifyEmailState";
 import VerifyPhoneStep from "./VerifyPhoneStep";
 const ResetPassword = () => {
-  const history = useHistory();
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
   const [method, set_method] = useState<"email" | "phone">("email");
@@ -32,7 +31,7 @@ const ResetPassword = () => {
       set_step("password_change");
     }
   };
-  useEffect(didMount, []);
+  useEffect(didMount, [paramToken]);
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>

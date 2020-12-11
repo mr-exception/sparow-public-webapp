@@ -8,14 +8,9 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-import { IconContext } from "react-icons";
-import { FaGoogle, FaGithub, FaTwitter, FaUser, FaLock } from "react-icons/fa";
 const Component = () => {
-  const [username, set_username] = useState("");
-  const [email, set_email] = useState("");
-  const [phone_number, set_phone_number] = useState("");
-  const [password, set_password] = useState("");
-  const [state, set_state] = useState<string>("");
+  const [username, set_username] = useState<string>("");
+  const [password, set_password] = useState<string>("");
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>
