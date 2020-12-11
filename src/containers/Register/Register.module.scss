@@ -1,0 +1,63 @@
+@import "../../variables.scss";
+.logoText{
+  font-size: 36px;
+  color: $text-orange ;
+  font-weight: 500;
+}
+
+.descriptionText{
+  font-size: 16px;
+  color: $text-grey;
+  font-weight: 300;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.logoImage{
+  width: 100px;
+}
+
+.mt25{
+  margin-top: 25px;
+}
+
+.text14{
+  font-size: 14px;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.textBold{
+  font-weight: bold;
+}
+
+.signInIcon{
+  width: 20px;
+  height: 20px;
+}
+
+.signInOptionSeperator{
+  position: relative;
+}
+
+.signInOptionSeperator::after{
+  content: '';
+  position: absolute;
+  height: 1px;
+  background-color: $text-grey;
+  width: 60px;
+  top: 9px;
+  left: 27px;
+}
+
+.signInOptionSeperator::before{
+  content: '';
+  position: absolute;
+  height: 1px;
+  background-color: $text-grey;
+  width: 60px;
+  top: 9px;
+  left: -70px;
+}

@@ -1,0 +1,13 @@
+@import "../variables.scss";
+.container {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+.label {
+  margin-top: 2px;
+}

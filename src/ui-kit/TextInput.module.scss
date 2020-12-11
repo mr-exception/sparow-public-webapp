@@ -1,0 +1,90 @@
+@import "../variables.scss";
+
+.containerDisabled {
+  .label {
+    color: #999 !important;
+  }
+  .input {
+    color: #999 !important;
+    border-color: #999 !important;
+  }
+  .icon {
+    color: #999 !important;
+  }
+}
+.input {
+    visibility: visible;
+    height: 32px;
+    display: inline-flex;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    background: #fff;
+    outline: none;
+    color: $text-grey;
+    font-size: 16px;
+    margin-top: 16px;
+}
+.label {
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.009375em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  position: absolute;
+  transform-origin: left top;
+  line-height: 1.15rem;
+  will-change: transform;
+  left: 16px;
+  top: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  transition: transform 150ms;
+  pointer-events: none;
+}
+.container {
+  visibility: visible;
+  height: 52px;
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  border: 1.5px solid $text-input-border;
+  overflow: hidden;
+  will-change: opacity, transform, color;
+  width: 100%;
+  padding: 0px 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.containerOnFocus{
+  border-color: $primary-background;
+}
+
+.isValid{
+  border-color: $is-valid;
+}
+
+.isInvalid{
+  border-color: $is-invalid;
+}
+
+.icon {
+  position: absolute;
+  right: 17px;
+  top: 20px;
+  transform: scale(1.5);
+}
+.containerOnFocus {
+  .label {
+    transform: translate(-10px, -13px) scale(0.75);
+    color: $primary-background;
+  }
+  .input {
+    border-color: $primary-background;
+  }
+  .icon {
+    color: $primary-background;
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../variables.scss";
+.stepCircle {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, $primary-background 50%, $bg-grey 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.7s ease-out;
+  transition-delay: 0.5s;
+}
+.stepSpace {
+  flex: 1;
+  height: 5px;
+  margin-top: 22px;
+  background: linear-gradient(to right, $primary-background 50%, $bg-grey 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+.active {
+  background-position: left bottom;
+}
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 15px;
+}

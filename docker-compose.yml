@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+  public-webapp:
+    container_name: public-webapp
+    build: ./
+    restart: always
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 5001:3000
+    networks:
+      - sparow-core
+    stdin_open: true
+    tty: true
+networks:
+  sparow-core:
+    external: false
