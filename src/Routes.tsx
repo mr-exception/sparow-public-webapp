@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Login from "./containers/Login/Login";
-import Register from "./containers/Register/Component";
+import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 
 const Component = () => {

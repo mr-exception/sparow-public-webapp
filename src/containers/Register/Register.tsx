@@ -8,11 +8,15 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
+import Sparow from "sparow-api";
 const Component = () => {
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
   const [phone_number, set_phone_number] = useState<string>("");
   const [password, set_password] = useState<string>("");
+  const submit = () => {
+    const sparow = new Sparow({base_url: "http://localhost:5000"});
+  }
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>
