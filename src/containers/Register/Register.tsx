@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "ui-kit/Botton";
 import Card from "ui-kit/Card";
 import Col from "ui-kit/Col";
@@ -8,15 +8,21 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
-import Sparow from "sparow-api";
+import Context from "Context";
 const Component = () => {
+  const context = useContext(Context);
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
-  const [phone_number, set_phone_number] = useState<string>("");
+  const [phone, set_phone] = useState<string>("");
   const [password, set_password] = useState<string>("");
-  const submit = () => {
-    const sparow = new Sparow({base_url: "http://localhost:5000"});
-  }
+  const submit = async() => {
+    try{
+      const result = await context.sparow?.registerPlain({username, email, phone, password});
+      console.log(result);
+    }catch(error){
+      console.log(error);
+    }
+  };
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>
@@ -73,8 +79,8 @@ const Component = () => {
               </Col>
               <Col col={12}>
                 <TextInput
-                  value={phone_number}
-                  onChange={set_phone_number}
+                  value={phone}
+                  onChange={set_phone}
                   label="Phone Number"
                   // icon={<FaLock />}
                   type="text"
@@ -90,7 +96,7 @@ const Component = () => {
                 />
               </Col>
               <Col className={Styles.mt25} col={12}>
-                <Button fullWidth={true}>Register</Button>
+                <Button onClick={submit} fullWidth={true}>Register</Button>
               </Col>
               <Col
                 col={12}

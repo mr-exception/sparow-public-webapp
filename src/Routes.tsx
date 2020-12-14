@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,8 +8,12 @@ import {
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
+import Sparow from "sparow-api";
+import Context from "Context";
 
 const Component = () => {
+  const context = useContext(Context);
+  context.sparow = new Sparow({base_url: "http://localhost:5000"});
   return (
     <Router>
       <Switch>

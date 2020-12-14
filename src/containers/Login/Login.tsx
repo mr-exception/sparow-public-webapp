@@ -84,7 +84,7 @@ const Component = () => {
                   style={{
                     fontWeight: "bold",
                   }}
-                  url={"#"}
+                  url="/register"
                 >
                   Create an Account
                 </Link>
