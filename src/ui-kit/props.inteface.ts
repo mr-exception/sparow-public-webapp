@@ -59,14 +59,6 @@ export interface IIconButtonProps {
   children?: any;
   onClick?: () => void;
 }
-export interface ITextInputProps {
-  value?: string;
-  onChange?: (value: string) => void;
-  label?: string;
-  disabled?: boolean;
-  icon?: any;
-  type?: "text" | "password" | "email";
-}
 export interface ICheckInputProps {
   checked?: boolean;
   name: string;

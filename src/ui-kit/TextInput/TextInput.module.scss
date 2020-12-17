@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "variables.scss";
 
 .containerDisabled {
   .label {
@@ -56,7 +56,7 @@
   width: 100%;
   padding: 0px 20px;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 .containerOnFocus{
   border-color: $primary-background;
@@ -87,4 +87,13 @@
   .icon {
     color: $primary-background;
   }
+}
+
+.area{
+  padding-bottom: 2px;
+}
+
+.error{
+  color: red;
+  font-size: 12px;
 }

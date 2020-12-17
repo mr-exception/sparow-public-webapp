@@ -9,6 +9,7 @@ const TextInput = ({
   disabled = false,
   type = "text",
   icon,
+  errors,
 }: ITextInputProps) => {
   const [label_classes, set_label_classes] = useState<string[]>([
     Styles.label,
@@ -76,22 +77,29 @@ const TextInput = ({
     );
   }
   return (
-    <div className={container_classes.join(" ")}>
-      <input
-        className={Styles.input}
-        disabled={disabled}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onFocus={() => {
-          set_focused(true);
-        }}
-        onBlur={() => {
-          set_focused(false);
-        }}
-        type={type}
-      />
-      <label className={Styles.label}>{label}</label>
-      <div className={Styles.icon}>{icon}</div>
+    <div className={Styles.area}>
+      <div className={container_classes.join(" ")}>
+        <input
+          className={Styles.input}
+          disabled={disabled}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onFocus={() => {
+            set_focused(true);
+          }}
+          onBlur={() => {
+            set_focused(false);
+          }}
+          type={type}
+        />
+        <label className={Styles.label}>{label}</label>
+        <div className={Styles.icon}>{icon}</div>
+      </div>
+      <ul className={Styles.error}>
+        {(errors || []).map((error, key) => (
+          <li key={key}>{error}</li>
+        ))}
+      </ul>
     </div>
   );
 };
