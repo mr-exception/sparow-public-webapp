@@ -11,19 +11,26 @@ import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Home from "./containers/Home/Home";
 import Sparow from "sparow-api";
 import Context from "Context";
-import { IProfile } from "sparow-api/dist/interfaces/profile";
+import { emptyProfile, IProfile } from "sparow-api/dist/interfaces/profile";
 
 const Component = () => {
   const context = useContext(Context);
   const [auth_status, set_auth_status] = useState<boolean>(false);
-  context.sparow = new Sparow({ base_url: "http://localhost:5000/api" });
   context.sparow.profile$.subscribe((profile) => {
     context.user = profile;
   });
   context.authChanged.subscribe(() => {
     set_auth_status(context.user.user.id !== "test");
   });
+  context.unauthorize = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("expires_at");
+    context.user = emptyProfile;
+    context.authChanged.next();
+  };
   const didMount = () => {
+    context.sparow = new Sparow({ base_url: "http://localhost:5000/api" });
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
     if (user_string && access_token) {

@@ -7,9 +7,11 @@ export default createContext<IContext>({
   sparow: new Sparow({ base_url: "not_defined" }),
   user: emptyProfile,
   authChanged: new Subject<void>(),
+  unauthorize: () => {},
 });
 interface IContext {
   sparow: Sparow;
   user: IProfile;
   authChanged: Subject<void>;
+  unauthorize: () => void;
 }
