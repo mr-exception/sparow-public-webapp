@@ -5,12 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t webapp-production -f Dockerfile.dev .
+  - docker build -t public-webapp -f Dockerfile .
 
 script:
-  - docker run -e CI=true webapp-production npm run test
+  - docker run -e CI=true public-webapp npm run test
 
 after_success:
-  - docker build -t webapp-production .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push webapp-production
+  - docker build -t public-webapp .
