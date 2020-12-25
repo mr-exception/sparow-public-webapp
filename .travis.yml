@@ -5,9 +5,9 @@ services:
   - docker
 
 before_install:
-  - yarn
-  - yarn build
-  - yarn lint
+  - npm i
+  - npm run build
+  - npm run lint
 
 script:
   - docker build -t public-webapp -f Dockerfile .
