@@ -10,7 +10,7 @@ cache:
   npm: false
 
 before_install:
-  - npm i -g npm@6
+  - npm i
   - npm run build
   - npm run lint
 
