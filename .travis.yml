@@ -1,4 +1,4 @@
-language: node_js
+language: generic
 
 sudo: required
 
@@ -7,8 +7,6 @@ services:
 
 before_install:
   - npm i
-  - CI=false npm run build
-  - npm run lint
 
 script:
   - docker build -t public-webapp -f Dockerfile .
