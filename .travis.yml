@@ -1,11 +1,16 @@
-language: generic
+language: node_js
+node_js:
+  - 15
 sudo: required
 
 services:
   - docker
 
+cache:
+  npm: false
+
 before_install:
-  - npm i
+  - npm i -g npm@6
   - npm run build
   - npm run lint
 
