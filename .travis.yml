@@ -5,4 +5,4 @@ services:
   - docker
 script:
   - docker build -t public-webapp -f Dockerfile .
-  - docker run -e CI=true public-webapp yarn test
+  - docker run -e CI=true public-webapp npm run test
