@@ -3,6 +3,9 @@ sudo: required
 
 services:
   - docker
-script:
+before_install:
   - docker build -t public-webapp -f Dockerfile .
+script:
   - docker run -e CI=true public-webapp
+after_success:
+  - docker stop public-webapp
