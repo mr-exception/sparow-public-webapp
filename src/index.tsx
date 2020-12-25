@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Routes from "./Routes";
 import reportWebVitals from "./reportWebVitals";
 import Echo from "laravel-echo";
-const io = require("socket.io-client");
+import io from "socket.io-client"
+
 
 const echo = new Echo({
   broadcaster: "socket.io",

@@ -5,10 +5,9 @@ services:
   - docker
 
 before_install:
-  - docker build -t public-webapp -f Dockerfile.dev .
+  - yarn
+  - yarn build
+  - yarn lint
 
 script:
-  - docker run -e CI=true public-webapp
-
-after_success:
-  - docker build -t public-webapp .
+  - docker build -t public-webapp -f Dockerfile .

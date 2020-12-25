@@ -14,12 +14,12 @@ export interface IRowProps {
   verticalAlignMD?: verticalAlignment;
   verticalAlignLG?: verticalAlignment;
 
-  children?: any;
+  children?: React.ReactChild;
   style?: any;
   className?: string[] | string;
 }
 export interface IColProps {
-  children?: any;
+  children?: React.ReactChild;
   style?: any;
   className?: string[] | string;
 
@@ -37,26 +37,26 @@ export interface IColProps {
   lgOffset?: colFlex;
 }
 export interface ICardProps {
-  children?: any;
+  children?: React.ReactChild;
 }
 export interface ICardHeaderProps {
-  children?: any;
+  children?: React.ReactChild;
 }
 export interface ICardBodyProps {
-  children?: any;
+  children?: React.ReactChild;
 }
 export interface ICardFooterProps {
-  children?: any;
+  children?: React.ReactChild;
 }
 export interface IButtonProps {
-  children?: any;
+  children?: React.ReactChild;
   fullWidth?: boolean;
   round?: boolean;
   onClick?: () => void;
 }
 export interface IIconButtonProps {
   icon?: any;
-  children?: any;
+  children?: React.ReactChild;
   onClick?: () => void;
 }
 export interface ITextInputProps {
@@ -87,7 +87,7 @@ export interface IImageProps {
 }
 
 export interface ILinkProps {
-  children?: any;
+  children?: React.ReactChild;
   url: string;
   style?: any;
   target?: "_blank" | "_self" | "_parent" | "_top";
