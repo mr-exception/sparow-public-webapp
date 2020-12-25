@@ -4,7 +4,5 @@ sudo: required
 services:
   - docker
 script:
-  - docker-compose up --build
-
-after_script:
-  - docker-compose down
+  - docker build -t public-webapp -f Dockerfile .
+  - docker run -e CI=true public-webapp yarn test
