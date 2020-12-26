@@ -12,4 +12,4 @@ before_install:
 
 script:
   - yarn lint
-  # - docker build -t public-webapp -f Dockerfile .
+  - yarn build
