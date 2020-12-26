@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "ui-kit/Botton";
-import Card from "ui-kit/Card";
+import {CardBody,CardFooter} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput";
@@ -14,7 +14,7 @@ const VerifyPhoneStep:React.FC<IVerifyPhoneStepProps> = ({
   const [token, set_token] = useState<string>("");
   return (
     <>
-      <Card.Body>
+      <CardBody>
         <Row align="start">
           <Col col={12} style={{ textAlign: "justify" }}>
             <h4>
@@ -33,8 +33,8 @@ const VerifyPhoneStep:React.FC<IVerifyPhoneStepProps> = ({
             />
           </Col>
         </Row>
-      </Card.Body>
-      <Card.Footer>
+      </CardBody>
+      <CardFooter>
         <Row style={{ marginTop: 15 }}>
           <Col col={6}>
             <Row align="start">
@@ -59,7 +59,7 @@ const VerifyPhoneStep:React.FC<IVerifyPhoneStepProps> = ({
             </Row>
           </Col>
         </Row>
-      </Card.Footer>
+      </CardFooter>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "ui-kit/Card";
+import {CardHeader,Card} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
@@ -60,7 +60,7 @@ const ResetPassword:React.FC = () => {
         </Row>
         <Space height="5vh" />
         <Card>
-          <Card.Header>
+          <CardHeader>
             <Row align="start">
               <Col
                 col={12}
@@ -73,7 +73,7 @@ const ResetPassword:React.FC = () => {
                 </h3>
               </Col>
             </Row>
-          </Card.Header>
+          </CardHeader>
           {step === "not_submitted" && (
             <SendStep
               email={email}

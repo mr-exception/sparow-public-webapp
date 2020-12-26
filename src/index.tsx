@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "./Routes";
-import reportWebVitals from "./reportWebVitals";
 import Echo from "laravel-echo";
 import io from "socket.io-client"
 
@@ -23,4 +22,3 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-reportWebVitals();

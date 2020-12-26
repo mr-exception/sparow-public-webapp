@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "ui-kit/Botton";
-import Card from "ui-kit/Card";
+import {CardBody,CardFooter} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput";
@@ -19,7 +19,7 @@ const SendStep:React.FC<ISendStepProps> = ({
 }: ISendStepProps) => {
   return (
     <>
-      <Card.Body>
+      <CardBody>
         <Row align="start">
           <Col col={12} style={{ textAlign: "justify" }}>
             <h4>
@@ -71,8 +71,8 @@ const SendStep:React.FC<ISendStepProps> = ({
             />
           </Col>
         </Row>
-      </Card.Body>
-      <Card.Footer>
+      </CardBody>
+      <CardFooter>
         <Row style={{ marginTop: 15 }} align="end">
           <Col col={12}>
             <Button
@@ -84,7 +84,7 @@ const SendStep:React.FC<ISendStepProps> = ({
             </Button>
           </Col>
         </Row>
-      </Card.Footer>
+      </CardFooter>
     </>
   );
 };
