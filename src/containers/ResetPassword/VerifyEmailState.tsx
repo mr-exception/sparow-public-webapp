@@ -3,7 +3,7 @@ import Card from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import { IVerifyEmailStepProps } from "./props.interface";
-const VerifyEmailState = ({ email }: IVerifyEmailStepProps) => {
+const VerifyEmailState:React.FC<IVerifyEmailStepProps> = ({ email }: IVerifyEmailStepProps) => {
   return (
     <Card.Body>
       <Row align="start">

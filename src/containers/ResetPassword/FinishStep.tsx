@@ -4,7 +4,7 @@ import Card from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import { useHistory } from "react-router-dom";
-const FinishStep = () => {
+const FinishStep:React.FC = () => {
   const history = useHistory();
   return (
     <>

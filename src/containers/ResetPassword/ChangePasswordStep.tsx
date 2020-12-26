@@ -7,7 +7,8 @@ import TextInput from "ui-kit/TextInput";
 import { FaPen } from "react-icons/fa";
 import { IChangePasswordStepProps } from "./props.interface";
 import FinishStep from "./FinishStep";
-const ChangePasswordStep = ({ token }: IChangePasswordStepProps) => {
+const ChangePasswordStep:React.FC<IChangePasswordStepProps> = ( {token}: IChangePasswordStepProps) => {
+  console.debug(token)
   const [password, set_password] = useState<string>("");
   const [password_confirmation, set_password_confirmation] = useState<string>(
     ""

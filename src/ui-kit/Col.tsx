@@ -1,7 +1,7 @@
 import React from "react";
 import { IColProps } from "./props.inteface";
 
-const Col = ({
+const Col:React.FC<IColProps> = ({
   style = {},
   children = "",
   className,

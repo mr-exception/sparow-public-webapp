@@ -6,7 +6,7 @@ import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput";
 import { FaPen } from "react-icons/fa";
 import { IVerifyPhoneStepProps } from "./props.interface";
-const VerifyPhoneStep = ({
+const VerifyPhoneStep:React.FC<IVerifyPhoneStepProps> = ({
   phone,
   goBack,
   submited,

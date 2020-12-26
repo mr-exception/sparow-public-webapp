@@ -9,7 +9,6 @@ const TextInput : React.FC<ICheckInputProps> = ({
   },
   label = "label",
   value = "value",
-  disabled = false,
   checked = false,
 }: ICheckInputProps) => {
   return (
@@ -25,7 +24,7 @@ const TextInput : React.FC<ICheckInputProps> = ({
         value={value}
         checked={checked}
         onChange={(e) => {
-          onChange(value);
+          onChange(e.target.value);
         }}
       />
       <span className={Styles.label}>{label}</span>

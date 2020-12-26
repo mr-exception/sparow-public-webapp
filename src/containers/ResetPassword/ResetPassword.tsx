@@ -11,7 +11,7 @@ import Styles from "./ResetPassword.module.scss";
 import SendStep from "./SendStep";
 import VerifyEmailState from "./VerifyEmailState";
 import VerifyPhoneStep from "./VerifyPhoneStep";
-const ResetPassword = () => {
+const ResetPassword:React.FC = () => {
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
   const [method, set_method] = useState<"email" | "phone">("email");

@@ -8,7 +8,7 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
-const Component = () => {
+const Component:React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
   const [phone_number, set_phone_number] = useState<string>("");

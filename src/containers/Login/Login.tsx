@@ -8,7 +8,7 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-const Component = () => {
+const Component:React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
   return (

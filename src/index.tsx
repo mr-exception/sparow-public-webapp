@@ -14,7 +14,7 @@ const echo = new Echo({
   transports: ["websocket"],
 });
 echo.channel("plain-message").listen("PlainMessage", (e: any) => {
-  console.log("event");
+  console.log(e,"event");
 });
 ReactDOM.render(
   <React.StrictMode>

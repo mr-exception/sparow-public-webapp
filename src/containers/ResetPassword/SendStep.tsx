@@ -8,7 +8,7 @@ import CheckInput from "ui-kit/CheckInput";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { ISendStepProps } from "./props.interface";
-const SendStep = ({
+const SendStep:React.FC<ISendStepProps> = ({
   email,
   set_email,
   phone,
@@ -56,6 +56,7 @@ const SendStep = ({
               value="phone"
               onChange={(value) => {
                 set_method(value as "email" | "phone");
+                console.log(value)
               }}
               label="send message to my phone number"
             />
