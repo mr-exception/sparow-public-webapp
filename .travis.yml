@@ -7,9 +7,9 @@ sudo: required
 services:
   - docker
 
-install:
-  - npm i
+before_install:
+  - yarn
 
 script:
-  - npm run lint
+  - yarn lint
   # - docker build -t public-webapp -f Dockerfile .
