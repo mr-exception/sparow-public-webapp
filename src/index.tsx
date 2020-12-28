@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "./Routes";
-import reportWebVitals from "./reportWebVitals";
 import Echo from "laravel-echo";
-const io = require("socket.io-client");
+import io from "socket.io-client"
+
 
 const echo = new Echo({
   broadcaster: "socket.io",
@@ -13,7 +13,7 @@ const echo = new Echo({
   transports: ["websocket"],
 });
 echo.channel("plain-message").listen("PlainMessage", (e: any) => {
-  console.log("event");
+  console.log(e,"event");
 });
 ReactDOM.render(
   <React.StrictMode>
@@ -22,4 +22,3 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-reportWebVitals();

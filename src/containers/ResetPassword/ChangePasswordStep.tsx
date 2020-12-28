@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Button from "ui-kit/Botton";
-import Card from "ui-kit/Card";
+import {CardBody,CardFooter} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput";
 import { FaPen } from "react-icons/fa";
 import { IChangePasswordStepProps } from "./props.interface";
 import FinishStep from "./FinishStep";
-const ChangePasswordStep = ({ token }: IChangePasswordStepProps) => {
+const ChangePasswordStep:React.FC<IChangePasswordStepProps> = ( {token}: IChangePasswordStepProps) => {
+  console.debug(token)
   const [password, set_password] = useState<string>("");
   const [password_confirmation, set_password_confirmation] = useState<string>(
     ""
@@ -23,7 +24,7 @@ const ChangePasswordStep = ({ token }: IChangePasswordStepProps) => {
   else
     return (
       <>
-        <Card.Body>
+        <CardBody>
           <Row align="start">
             <Col col={12} style={{ textAlign: "justify" }}>
               <h4>done! now you can change your password.</h4>
@@ -49,8 +50,8 @@ const ChangePasswordStep = ({ token }: IChangePasswordStepProps) => {
               />
             </Col>
           </Row>
-        </Card.Body>
-        <Card.Footer>
+        </CardBody>
+        <CardFooter>
           <Row style={{ marginTop: 15 }}>
             <Col col={12}>
               <Row align="end">
@@ -64,7 +65,7 @@ const ChangePasswordStep = ({ token }: IChangePasswordStepProps) => {
               </Row>
             </Col>
           </Row>
-        </Card.Footer>
+        </CardFooter>
       </>
     );
 };

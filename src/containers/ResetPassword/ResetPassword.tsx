@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "ui-kit/Card";
+import {CardHeader,Card} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
@@ -11,7 +11,7 @@ import Styles from "./ResetPassword.module.scss";
 import SendStep from "./SendStep";
 import VerifyEmailState from "./VerifyEmailState";
 import VerifyPhoneStep from "./VerifyPhoneStep";
-const ResetPassword = () => {
+const ResetPassword:React.FC = () => {
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
   const [method, set_method] = useState<"email" | "phone">("email");
@@ -60,7 +60,7 @@ const ResetPassword = () => {
         </Row>
         <Space height="5vh" />
         <Card>
-          <Card.Header>
+          <CardHeader>
             <Row align="start">
               <Col
                 col={12}
@@ -73,7 +73,7 @@ const ResetPassword = () => {
                 </h3>
               </Col>
             </Row>
-          </Card.Header>
+          </CardHeader>
           {step === "not_submitted" && (
             <SendStep
               email={email}

@@ -1,7 +1,7 @@
 import React from "react";
 import { IRowProps } from "./props.inteface";
 
-const Row = ({
+const Row:React.FC<IRowProps> = ({
   children = "",
   style = {},
   align,

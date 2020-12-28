@@ -2,12 +2,13 @@ import React from "react";
 import { ICheckInputProps } from "./props.inteface";
 import Styles from "./CheckInput.module.scss";
 
-const TextInput = ({
+const TextInput : React.FC<ICheckInputProps> = ({
   name,
-  onChange = () => {},
+  onChange = () => {
+    // do nothing.
+  },
   label = "label",
   value = "value",
-  disabled = false,
   checked = false,
 }: ICheckInputProps) => {
   return (
@@ -23,7 +24,7 @@ const TextInput = ({
         value={value}
         checked={checked}
         onChange={(e) => {
-          onChange(value);
+          onChange(e.target.value);
         }}
       />
       <span className={Styles.label}>{label}</span>

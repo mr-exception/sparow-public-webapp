@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "node"
+
+sudo: required
+
+before_install:
+  - yarn
+
+script:
+  - yarn lint
+  - yarn build

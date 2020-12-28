@@ -2,10 +2,9 @@ import React from "react";
 import Styles from "./styles.module.scss";
 import { IProps } from "./interface";
 
-const Button = ({ steps = [], index = 0 }: IProps) => {
+const Button:React.FC<IProps> = ({ steps = [], index = 0 }: IProps) => {
   const result = [];
   for (let i = 0; i < steps.length; i++) {
-    const step = steps[i];
     const circleClasses = [Styles.stepCircle];
     const spaceClasses = [Styles.stepSpace];
     if (i <= index) circleClasses.push(Styles.active);

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "ui-kit/Botton";
-import Card from "ui-kit/Card";
+import {CardBody,CardFooter} from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput";
@@ -8,7 +8,7 @@ import CheckInput from "ui-kit/CheckInput";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { ISendStepProps } from "./props.interface";
-const SendStep = ({
+const SendStep:React.FC<ISendStepProps> = ({
   email,
   set_email,
   phone,
@@ -19,7 +19,7 @@ const SendStep = ({
 }: ISendStepProps) => {
   return (
     <>
-      <Card.Body>
+      <CardBody>
         <Row align="start">
           <Col col={12} style={{ textAlign: "justify" }}>
             <h4>
@@ -56,6 +56,7 @@ const SendStep = ({
               value="phone"
               onChange={(value) => {
                 set_method(value as "email" | "phone");
+                console.log(value)
               }}
               label="send message to my phone number"
             />
@@ -70,8 +71,8 @@ const SendStep = ({
             />
           </Col>
         </Row>
-      </Card.Body>
-      <Card.Footer>
+      </CardBody>
+      <CardFooter>
         <Row style={{ marginTop: 15 }} align="end">
           <Col col={12}>
             <Button
@@ -83,7 +84,7 @@ const SendStep = ({
             </Button>
           </Col>
         </Row>
-      </Card.Footer>
+      </CardFooter>
     </>
   );
 };

@@ -9,7 +9,7 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Component";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 
-const Component = () => {
+const Component:React.FC = () => {
   return (
     <Router>
       <Switch>

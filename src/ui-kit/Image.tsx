@@ -1,7 +1,7 @@
 import React from "react";
 import { IImageProps } from "./props.inteface";
 
-const Image = ({
+const Image:React.FC<IImageProps> = ({
   source,
   alt = "image",
   style = {},
