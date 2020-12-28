@@ -4,7 +4,7 @@ import Sparow from "sparow-api";
 import { IProfile, emptyProfile } from "sparow-api/dist/interfaces/profile";
 
 export default createContext<IContext>({
-  sparow: new Sparow({ base_url: "not_defined" }),
+  sparow: new Sparow("http://localhost:5000/api", "ws://localhost:5003"),
   user: emptyProfile,
   authChanged: new Subject<void>(),
   unauthorize: () => {},

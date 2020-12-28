@@ -9,18 +9,13 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Home from "./containers/Home/Home";
-import Sparow from "sparow-api";
 import Context from "Context";
-import { emptyProfile, IProfile } from "sparow-api/dist/interfaces/profile";
-
+import { emptyProfile } from "sparow-api/dist/interfaces/profile";
 const Component = () => {
   const context = useContext(Context);
   const [auth_status, set_auth_status] = useState<boolean>(false);
-  context.sparow.profile$.subscribe((profile) => {
-    context.user = profile;
-  });
   context.authChanged.subscribe(() => {
-    set_auth_status(context.user.user.id !== "test");
+    set_auth_status(context.user.id !== "test");
   });
   context.unauthorize = () => {
     localStorage.removeItem("user");
@@ -29,8 +24,10 @@ const Component = () => {
     context.user = emptyProfile;
     context.authChanged.next();
   };
-  const didMount = () => {
-    context.sparow = new Sparow({ base_url: "http://localhost:5000/api" });
+  useEffect(() => {
+    context.sparow.profile$.subscribe((profile) => {
+      context.user = profile;
+    });
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
     if (user_string && access_token) {
@@ -39,8 +36,7 @@ const Component = () => {
       context.sparow.setProfile(user, access_token);
       context.authChanged.next();
     }
-  };
-  useEffect(didMount);
+  }, [context]);
   if (!auth_status) {
     return (
       <Router>

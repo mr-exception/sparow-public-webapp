@@ -29,8 +29,8 @@ const Component = () => {
         });
         context.user = result;
         localStorage.setItem("user", JSON.stringify(result));
-        localStorage.setItem("auth_token", result.user.access_token);
-        localStorage.setItem("expires_at", result.user.expires_at.toString());
+        localStorage.setItem("auth_token", result.access_token);
+        localStorage.setItem("expires_at", result.expires_at.toString());
         context.authChanged.next();
       }
     } catch (error) {
