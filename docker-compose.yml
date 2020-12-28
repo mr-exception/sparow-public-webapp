@@ -4,7 +4,7 @@ services:
     container_name: public-webapp
     build:
       context: ./
-      dockerfile: ./Dockerfile.developmen
+      dockerfile: ./Dockerfile.development
     restart: always
     volumes:
       - ./:/usr/src/app
