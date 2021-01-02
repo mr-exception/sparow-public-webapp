@@ -1,6 +1,5 @@
 @import "../variables.scss";
 .link {
-  text-decoration: none;
-  cursor: pointer;
+  text-decoration: none !important;
   color: $text-orange;
 }
