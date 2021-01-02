@@ -8,11 +8,15 @@ import {
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Component";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
+import Pay from "./containers/Pay/Pay";
 
-const Component:React.FC = () => {
+const Component: React.FC = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/pay">
+          <Pay />
+        </Route>
         <Route path="/login">
           <Login />
         </Route>
