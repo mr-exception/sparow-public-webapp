@@ -4,8 +4,10 @@ import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import Image from 'ui-kit/Image'
 import Link from 'ui-kit/Link'
+import DropDown from 'ui-kit/DropDown'
+import Avatar from 'ui-kit/Avatar'
 const Component:React.FC = () => {
-
+  const listItems = [{"label":"item 1"},{"label":"item 2"}]
   return (
     <nav className={Styles.nav}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
@@ -20,13 +22,12 @@ const Component:React.FC = () => {
                   className={Styles.logoImage}></Image>
                 </Link>
               </div>
-              {/* <div className={Styles.title}>
-                <Link url="dashboard">
-                  <span className={Styles.logoTitle}>sparow</span>
-                </Link>
-              </div> */}
             </div>
-            <div className={Styles.navAvatar}>avatar here</div>
+            <div className={Styles.navAvatar}>
+              <DropDown list={listItems}>
+                <Avatar size={45} round={true}>test</Avatar>
+              </DropDown>
+            </div>
           </div>
         </Col>
       </Row>
