@@ -61,12 +61,6 @@ export interface IAvatarProps {
   round?: boolean;
   onClick?: () => void;
 }
-
-export interface IDropDownProps {
-  children: any;
-  list:Array<any>;
-  onClick?: () => void;
-}
 export interface IIconButtonProps {
   icon?: any;
   children?: any;

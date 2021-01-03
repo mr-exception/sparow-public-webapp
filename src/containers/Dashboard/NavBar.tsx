@@ -6,8 +6,14 @@ import Image from 'ui-kit/Image'
 import Link from 'ui-kit/Link'
 import DropDown from 'ui-kit/DropDown'
 import Avatar from 'ui-kit/Avatar'
+import {FaSignOutAlt} from 'react-icons/fa'
 const Component:React.FC = () => {
-  const listItems = [{"label":"item 1"},{"label":"item 2"}]
+  const listItems = [
+    {"label":"profile","url":"/"},
+    {"label":"settings","url":"/"},
+    {"label":"developement","url":"/"},
+    {"label":"logout","url":"/","icon":<FaSignOutAlt/>}
+  ]
   return (
     <nav className={Styles.nav}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
