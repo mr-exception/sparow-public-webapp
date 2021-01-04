@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+.container {
+  flex: 1;
+  max-width: 150px;
+}
+.logo {
+  max-height: 80px;
+}
+.caption {
+  margin-top: 5px;
+}
