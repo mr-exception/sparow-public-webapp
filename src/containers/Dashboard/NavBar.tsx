@@ -6,16 +6,18 @@ import Image from 'ui-kit/Image'
 import Link from 'ui-kit/Link'
 import DropDown from 'ui-kit/DropDown'
 import Avatar from 'ui-kit/Avatar'
+import Wrapper from 'ui-kit/Wrapper'
 import {FaSignOutAlt} from 'react-icons/fa'
 const Component:React.FC = () => {
   const listItems = [
-    {"label":"profile","url":"/"},
-    {"label":"settings","url":"/"},
-    {"label":"developement","url":"/"},
-    {"label":"logout","url":"/","icon":<FaSignOutAlt/>}
+    {"label":"profile","url":"/profile"},
+    {"label":"setting","url":"/setting"},
+    {"label":"developement","url":"/developement"},
+    {"label":"logout","url":"/logout","icon":<FaSignOutAlt/>}
   ]
+
   return (
-    <nav className={Styles.nav}>
+    <Wrapper injectedClass={Styles.nav}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
         <Col lg={8} md={10} sm={12} xs={12}>
           <div className={Styles.navContainer}>
@@ -37,7 +39,7 @@ const Component:React.FC = () => {
           </div>
         </Col>
       </Row>
-    </nav>
+    </Wrapper>
   );
 };
 

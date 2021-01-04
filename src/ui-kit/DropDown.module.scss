@@ -37,7 +37,7 @@
   padding: 10px 5px;
   display: flex;
   cursor: pointer;
-  color: $text-grey;
+  color: $text-grey !important;
   font-size: $text-sm;
   &:hover{
     background-color: #f4f5f7;
@@ -52,4 +52,14 @@
   line-height: 0;
   margin-top: 3px;
   margin-right: 5px;
+  color: $text-grey !important;
+}
+
+.overlay{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+filter: blur(10);
 }
