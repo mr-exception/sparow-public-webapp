@@ -1,7 +1,9 @@
 @import "../../variables.scss";
 .container {
-  flex: 1;
-  max-width: 150px;
+  margin: 5px;
+}
+.container:hover {
+  background-color: #eee;
 }
 .logo {
   max-height: 80px;

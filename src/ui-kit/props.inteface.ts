@@ -1,23 +1,6 @@
-type alignment = "start" | "center" | "end";
-type verticalAlignment = "top" | "center" | "end";
-type colFlex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-export interface IRowProps {
-  align?: alignment;
-  alignXS?: alignment;
-  alignSM?: alignment;
-  alignMD?: alignment;
-  alignLG?: alignment;
-
-  verticalAlign?: verticalAlignment;
-  verticalAlignXS?: verticalAlignment;
-  verticalAlignSM?: verticalAlignment;
-  verticalAlignMD?: verticalAlignment;
-  verticalAlignLG?: verticalAlignment;
-
-  children?: any;
-  style?: any;
-  className?: string[] | string;
-}
+export type alignment = "start" | "center" | "end";
+export type verticalAlignment = "top" | "center" | "end";
+export type colFlex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export interface IColProps {
   children?: any;
   style?: any;

@@ -1,7 +1,26 @@
 import React from "react";
-import { IRowProps } from "./props.inteface";
+import { alignment, verticalAlignment } from "./props.inteface";
 
-const Row:React.FC<IRowProps> = ({
+export interface IProps {
+  align?: alignment;
+  alignXS?: alignment;
+  alignSM?: alignment;
+  alignMD?: alignment;
+  alignLG?: alignment;
+
+  verticalAlign?: verticalAlignment;
+  verticalAlignXS?: verticalAlignment;
+  verticalAlignSM?: verticalAlignment;
+  verticalAlignMD?: verticalAlignment;
+  verticalAlignLG?: verticalAlignment;
+
+  children?: any;
+  style?: any;
+  className?: string[] | string;
+
+  onClick?: () => void;
+}
+const Row: React.FC<IProps> = ({
   children = "",
   style = {},
   align,
@@ -15,7 +34,10 @@ const Row:React.FC<IRowProps> = ({
   verticalAlignSM,
   verticalAlignXS,
   className,
-}: IRowProps) => {
+  onClick = () => {
+    return;
+  },
+}: IProps) => {
   let classes: string[] = ["row"];
   if (align)
     classes = classes.concat([
@@ -44,7 +66,7 @@ const Row:React.FC<IRowProps> = ({
     else classes.push(className);
   }
   return (
-    <div className={classes.join(" ")} style={style}>
+    <div className={classes.join(" ")} style={style} onClick={onClick}>
       {children}
     </div>
   );

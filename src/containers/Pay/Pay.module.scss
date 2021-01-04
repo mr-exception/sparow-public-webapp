@@ -11,6 +11,9 @@
   overflow-x: auto;
   width: 100%;
 }
+.totalRow:hover {
+  background-color: white !important;
+}
 .table {
   border: 0;
   white-space: nowrap;
@@ -54,8 +57,22 @@
 }
 
 .gatesRow {
-  display: flex;
-  flex-direction: row;
   margin-top: 15px;
-  justify-content: center;
+}
+.title {
+  text-align: center;
+  font-size: 20pt;
+  margin-bottom: 25px;
+  margin-top: 55px;
+}
+.description {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  p {
+    text-align: justify;
+  }
+}
+.choosePayment {
+  font-size: 14pt;
+  margin-top: 30px;
 }

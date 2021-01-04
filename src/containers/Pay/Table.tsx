@@ -42,7 +42,7 @@ const Table: React.FC<IProps> = ({ rows = [] }: IProps) => {
               <td>{row.total_price} usd</td>
             </tr>
           ))}
-          <tr>
+          <tr className={Styles.totalRow}>
             <td> - </td>
             <td colSpan={5}>total cost</td>
             <td>{total_cost} usd</td>
