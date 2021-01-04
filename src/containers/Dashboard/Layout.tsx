@@ -9,7 +9,7 @@ const Component:React.FC<IDashboardProps> = ({children}:IDashboardProps) => {
   return (
     <div className={Styles.main}>
       <NavBar/>
-      <BreadCrumb/>
+      <BreadCrumb url="/dashboard" label="Dashboard" />
       {children}
       <Footer/>
     </div>

@@ -12,16 +12,7 @@ const DropDown:React.FC<IDropDownProps> = ({children,list}:IDropDownProps) => {
   let dropDownContainer;
   let overlay;
 
-  const toggleDropDown = () => {
-    if(!visiblity){
-      setVisiblity(true)
-      console.log("visible")
-    }else{
-      setVisiblity(false)
-      console.log("not visible")
-    }
-  }
-
+  const toggleDropDown = () => !visiblity?setVisiblity(true):setVisiblity(false)
   const handleOutSideClick = () => setVisiblity(false)
   
   if(visiblity){
