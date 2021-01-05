@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./Pay.module.scss";
+import Styles from "./CartTable.module.scss";
 interface IRow {
   title: string;
   application: string;
@@ -11,7 +11,7 @@ interface IRow {
 interface IProps {
   rows?: IRow[];
 }
-const Table: React.FC<IProps> = ({ rows = [] }: IProps) => {
+const CartTable: React.FC<IProps> = ({ rows = [] }: IProps) => {
   let total_cost = 0;
   rows.forEach((row) => {
     total_cost += parseInt(row.total_price);
@@ -53,4 +53,4 @@ const Table: React.FC<IProps> = ({ rows = [] }: IProps) => {
   );
 };
 
-export default Table;
+export default CartTable;

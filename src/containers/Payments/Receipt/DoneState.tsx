@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, CardHeader, CardBody } from "ui-kit/Card";
 import Col from "ui-kit/Col";
-import PayGate from "ui-kit/PayGate/PayGate";
+import PayGate from "ui-kit/Payments/PayGate/PayGate";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
-import Table from "./Table";
-import Styles from "./Pay.module.scss";
-const Component: React.FC = () => {
+import Table from "ui-kit/Payments/CartTable/CartTable";
+import Styles from "./Receipt.module.scss";
+const DoneState: React.FC = () => {
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={10} md={10} sm={12} xs={12}>
@@ -15,7 +15,7 @@ const Component: React.FC = () => {
           <CardHeader>
             <Row align="center">
               <Col col={12} className={Styles.title}>
-                Payment
+                Receipt
               </Col>
               <Col col={10} className={Styles.description}>
                 <p>
@@ -126,4 +126,4 @@ const Component: React.FC = () => {
   );
 };
 
-export default Component;
+export default DoneState;
