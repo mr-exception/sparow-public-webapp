@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from './NavBar';
-import BreadCrumb from './BreadCrumb'
+import NavBar from './components/NavBar';
+import BreadCrumb from './components/BreadCrumb'
 import Styles from "./Layout.module.scss";
 interface IProps {
   children: any;

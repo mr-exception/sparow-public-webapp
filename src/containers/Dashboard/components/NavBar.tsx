@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import Styles from "./NavBar.module.scss";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
@@ -6,16 +6,45 @@ import Image from 'ui-kit/Image'
 import Link from 'ui-kit/Link'
 import DropDown from 'ui-kit/DropDown'
 import Avatar from 'ui-kit/Avatar'
+import MenuBar from './Menubar';
 import Wrapper from 'ui-kit/Wrapper'
 import {FaSignOutAlt} from 'react-icons/fa'
-const Component:React.FC = () => {
+import {MdMenu,MdClose} from 'react-icons/md'
+import MobileMenu from './MobileMenu'
+const NavBar:React.FC = () => {
   const listItems = [
     {"label":"profile","url":"/profile"},
     {"label":"setting","url":"/setting"},
     {"label":"developement","url":"/developement"},
     {"label":"logout","url":"/logout","icon":<FaSignOutAlt/>}
   ]
+  const [mobile,setMobile] = useState(()=>window.innerWidth<640?true:false);
 
+  useEffect(() => {
+    const handleResize = () =>window.innerWidth<640?setMobile(true):setMobile(false)
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  });
+
+  let avatar;
+
+  if(mobile)
+    avatar = (
+      <MobileMenu  list={listItems}>
+        <MenuBar>
+          <MdMenu />
+        </MenuBar>
+      </MobileMenu>
+    );
+  else{
+    avatar = (
+      <DropDown list={listItems}>
+        <Avatar size={45} round={true}>test</Avatar>
+      </DropDown>
+    )
+  }
   return (
     <Wrapper injectedClass={Styles.nav}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
@@ -32,9 +61,7 @@ const Component:React.FC = () => {
               </div>
             </div>
             <div className={Styles.navAvatar}>
-              <DropDown list={listItems}>
-                <Avatar size={45} round={true}>test</Avatar>
-              </DropDown>
+              {avatar}
             </div>
           </div>
         </Col>
@@ -43,4 +70,4 @@ const Component:React.FC = () => {
   );
 };
 
-export default Component;
+export default NavBar;

@@ -2,37 +2,43 @@
 
 
 .wrapper{
-  @media screen and (max-width:1199px) {
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
+  @media screen and (max-width:639px) {
+    margin-right: auto;
+    margin-left:  auto;
     max-width: 1200px;
-    padding-right: 10px; /* 3 */
-    padding-left:  10px; /* 3 */
-
+    padding-right: 0;
+    padding-left:  0;
+  }
+  @media screen and (min-width:640px) and (max-width:1199px) {
+    margin-right: auto;
+    margin-left:  auto;
+    max-width: 1200px;
+    padding-right: 10px;
+    padding-left:  10px;
   }
   @media only screen and(min-width:1200px){
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    padding-right: 2.5rem !important;  /* 3 */
-    padding-left:  2.5rem !important; /* 3 */
+    margin-right: auto;
+    margin-left:  auto;
+    padding-right: 2.5rem !important; 
+    padding-left:  2.5rem !important;
   }
   @media only screen and(min-width:1300px){
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    padding-right: 5rem !important;  /* 3 */
-    padding-left:  5rem !important; /* 3 */
+    margin-right: auto;
+    margin-left:  auto;
+    padding-right: 5rem !important; 
+    padding-left:  5rem !important;
   }
   @media only screen and(min-width:1400px){
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    padding-right: 7.5rem !important;  /* 3 */
-    padding-left:  7.5rem !important; /* 3 */
+    margin-right: auto;
+    margin-left:  auto;
+    padding-right: 7.5rem !important; 
+    padding-left:  7.5rem !important;
   }
   @media only screen and(min-width:1680px){
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    padding-right: 20rem !important;  /* 3 */
-    padding-left:  20rem !important; /* 3 */
+    margin-right: auto;
+    margin-left:  auto;
+    padding-right: 20rem !important; 
+    padding-left:  20rem !important;
   }
 }
 
