@@ -1,16 +1,17 @@
 import React,{ useState } from "react";
 import Styles from './MobileMenu.module.scss'
 import {Link as RouteLink} from 'react-router-dom'
+import MenuBar from './Menubar';
+import {MdMenu,MdClose} from 'react-icons/md'
 interface IProps {
-  children: any;
   list:Array<any>;
   onClick?: () => void;
 }
 
-const MobileMenu:React.FC<IProps> = ({children,list}:IProps) => {
+const MobileMenu:React.FC<IProps> = ({list}:IProps) => {
   const [visiblity,setVisiblity] = useState(false);
   let menuitem;
-
+  let menuIcon = <MdMenu />
   const toggleMenu = () => !visiblity?setVisiblity(true):setVisiblity(false)
   
   if(visiblity){
@@ -27,13 +28,19 @@ const MobileMenu:React.FC<IProps> = ({children,list}:IProps) => {
         }
       </ul>
     )
+    menuIcon = <MdClose />
   }else{
     menuitem = null;
+    menuIcon = <MdMenu/>
   }
 
   return(
     <>
-      <div onClick={toggleMenu}>{children}</div>
+      <div onClick={toggleMenu}>
+        <MenuBar>
+          {menuIcon}
+        </MenuBar>
+      </div>
       {menuitem}
     </>
   );

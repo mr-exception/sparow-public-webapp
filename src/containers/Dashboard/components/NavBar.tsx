@@ -6,10 +6,8 @@ import Image from 'ui-kit/Image'
 import Link from 'ui-kit/Link'
 import DropDown from 'ui-kit/DropDown'
 import Avatar from 'ui-kit/Avatar'
-import MenuBar from './Menubar';
 import Wrapper from 'ui-kit/Wrapper'
 import {FaSignOutAlt} from 'react-icons/fa'
-import {MdMenu,MdClose} from 'react-icons/md'
 import MobileMenu from './MobileMenu'
 const NavBar:React.FC = () => {
   const listItems = [
@@ -32,11 +30,7 @@ const NavBar:React.FC = () => {
 
   if(mobile)
     avatar = (
-      <MobileMenu  list={listItems}>
-        <MenuBar>
-          <MdMenu />
-        </MenuBar>
-      </MobileMenu>
+      <MobileMenu  list={listItems}/>
     );
   else{
     avatar = (
