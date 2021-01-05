@@ -15,7 +15,7 @@ const BreadCrumb:React.FC<IProps> = ({url,label}:IProps) => {
   return (
     <Wrapper injectedClass={Styles.breadCrumbWrapper}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
-        <Col lg={8} md={10} sm={12} xs={12}>
+        <Col lg={12} md={12} sm={12} xs={12}>
           <h5 className={Styles.breadCrumblabel}>
             <Link to={url}>{label}</Link>
             {" / "}

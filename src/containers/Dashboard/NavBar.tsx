@@ -19,7 +19,7 @@ const Component:React.FC = () => {
   return (
     <Wrapper injectedClass={Styles.nav}>
       <Row align="center" verticalAlign="center" style={{'background':"white"}}>
-        <Col lg={8} md={10} sm={12} xs={12}>
+        <Col lg={12} md={12} sm={12} xs={12}>
           <div className={Styles.navContainer}>
             <div className={Styles.logoContainer}>
               <div className={Styles.logo}>
