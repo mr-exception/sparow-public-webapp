@@ -18,31 +18,7 @@ const DoneState: React.FC = () => {
                 Receipt
               </Col>
               <Col col={10} className={Styles.description}>
-                <p>
-                  Dolore minim duis ex amet eiusmod ipsum id consequat tempor
-                  excepteur sint enim. Qui eu consectetur excepteur occaecat eu
-                  mollit. Et reprehenderit nisi culpa adipisicing eu sit ex
-                  culpa dolor aute deserunt ipsum anim.
-                </p>
-                <p>
-                  Commodo sit pariatur et dolor laboris commodo elit veniam
-                  excepteur nisi. Incididunt enim sunt nostrud commodo ex. Aute
-                  nisi ipsum ullamco adipisicing proident tempor. Mollit labore
-                  reprehenderit laboris anim amet magna deserunt deserunt.
-                  Ullamco sint tempor sint amet pariatur dolore amet occaecat id
-                  in sit consectetur minim fugiat. Tempor dolor ad Lorem
-                  laborum. Nulla elit velit elit non deserunt Lorem Lorem.
-                </p>
-                <p>
-                  Incididunt aute et occaecat sunt. Nostrud dolor aliqua laborum
-                  labore incididunt laborum nulla qui dolore dolor est qui
-                  excepteur excepteur. Do pariatur do deserunt occaecat tempor
-                  nisi excepteur incididunt sint sunt amet incididunt voluptate.
-                  Id culpa sit deserunt deserunt culpa velit velit id labore.
-                  Minim sit duis enim excepteur consectetur laboris excepteur
-                  exercitation. Aliqua ullamco cupidatat do ad duis sint
-                  excepteur officia magna consequat tempor.
-                </p>
+                <p>transaction was successful</p>
               </Col>
             </Row>
           </CardHeader>
@@ -72,50 +48,9 @@ const DoneState: React.FC = () => {
               </Col>
             </Row>
             <Row align="center">
-              <Col col={12} className={Styles.choosePayment}>
-                choose your payment method
-              </Col>
-            </Row>
-            <Row align="center">
-              <Col col={12} className={Styles.gatesRow}>
-                <Row align="center">
-                  <Col lg={2} md={3} sm={12} xs={12}>
-                    <PayGate
-                      icon="/assets/pay-gate-logo/bitcoin.svg"
-                      caption="bitcoin"
-                      onClick={() => {
-                        alert("choosed bitcoin");
-                      }}
-                    />
-                  </Col>
-                  <Col lg={2} md={3} sm={12} xs={12}>
-                    <PayGate
-                      icon="/assets/pay-gate-logo/pasargad.svg"
-                      caption="pasargad bank"
-                      onClick={() => {
-                        alert("choosed pasargad bank");
-                      }}
-                    />
-                  </Col>
-                  <Col lg={2} md={3} sm={12} xs={12}>
-                    <PayGate
-                      icon="/assets/pay-gate-logo/melli.svg"
-                      caption="melli bank"
-                      onClick={() => {
-                        alert("choosed melli bank");
-                      }}
-                    />
-                  </Col>
-                  <Col lg={2} md={3} sm={12} xs={12}>
-                    <PayGate
-                      icon="/assets/pay-gate-logo/saman.svg"
-                      caption="saman bank"
-                      onClick={() => {
-                        alert("choosed saman bank");
-                      }}
-                    />
-                  </Col>
-                </Row>
+              <Col col={10} className={Styles.description}>
+                <p>date: 2021/01/14 15:43</p>
+                <p>ref ID: 03948293</p>
               </Col>
             </Row>
           </CardBody>
