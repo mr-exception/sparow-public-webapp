@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "variables.scss";
 
 .containerDisabled {
   .label {
@@ -13,19 +13,19 @@
   }
 }
 .input {
-    visibility: visible;
-    height: 32px;
-    display: inline-flex;
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 100%;
-    border: none;
-    background: #fff;
-    outline: none;
-    color: $text-grey;
-    font-size: 16px;
-    margin-top: 16px;
+  visibility: visible;
+  height: 32px;
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  border: none;
+  background: #fff;
+  outline: none;
+  color: $text-grey;
+  font-size: 16px;
+  margin-top: 16px;
 }
 .label {
   box-sizing: border-box;
@@ -58,15 +58,15 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
-.containerOnFocus{
+.containerOnFocus {
   border-color: $primary-background;
 }
 
-.isValid{
+.isValid {
   border-color: $is-valid;
 }
 
-.isInvalid{
+.isInvalid {
   border-color: $is-invalid;
 }
 

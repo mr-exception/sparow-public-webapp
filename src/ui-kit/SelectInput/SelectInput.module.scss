@@ -1,0 +1,18 @@
+@import "variables.scss";
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  flex: 1;
+  align-self: flex-start;
+  margin-bottom: 5px;
+  font-size: 10pt;
+}
+.input {
+  flex: 1;
+  align-self: stretch;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12pt;
+}

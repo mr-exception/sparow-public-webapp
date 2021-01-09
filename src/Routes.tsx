@@ -10,11 +10,15 @@ import Register from "./containers/Register/Component";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Pay from "./containers/Payments/Pay/Pay";
 import Receipt from "./containers/Payments/Receipt/Receipt";
+import Wallet from "./containers/Payments/Wallet/Wallet";
 
 const Component: React.FC = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/wallet">
+          <Wallet />
+        </Route>
         <Route path="/pay">
           <Pay />
         </Route>

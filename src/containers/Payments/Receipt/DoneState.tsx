@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardHeader, CardBody } from "ui-kit/Card";
 import Col from "ui-kit/Col";
-import PayGate from "ui-kit/Payments/PayGate/PayGate";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
 import Table from "ui-kit/Payments/CartTable/CartTable";
