@@ -1,0 +1,70 @@
+@import "../../../variables.scss";
+
+.nav{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  background-color: $bg-white;
+  border-color: rgba(244, 245, 247, 1);
+  border-bottom-width: 1px;
+}
+.navContainer{
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  line-height: 1.5;
+}
+.logoContainer{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  display: flex;
+  align-items: center;
+}
+.logo{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.logoImage{
+  width:70px;
+}
+.title{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  display: flex;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  margin-left: 1.5rem;
+}
+.logoTitle{
+  text-decoration: none;
+  color: $text-grey;
+}
+.navAvatar{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.logoText{
+  font-size: 36px;
+  color: $text-orange ;
+  font-weight: 500;
+}

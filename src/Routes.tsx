@@ -8,6 +8,9 @@ import {
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Component";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
+import Dashboard from "./containers/Dashboard/Layout";
+import Profile from './containers/Dashboard/Profile';
+import Main from './containers/Dashboard/Main';
 
 const Component:React.FC = () => {
   return (
@@ -24,6 +27,16 @@ const Component:React.FC = () => {
         </Route>
         <Route path="/reset-password">
           <ResetPassword />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard>
+            <Main/>
+          </Dashboard>
+        </Route>
+        <Route path="/profile">
+          <Dashboard>
+            <Profile/>
+          </Dashboard>
         </Route>
         <Redirect from="/" to="/login" />
       </Switch>

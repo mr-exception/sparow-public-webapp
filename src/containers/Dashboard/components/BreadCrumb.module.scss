@@ -1,0 +1,24 @@
+@import '../../../variables.scss';
+
+.breadCrumbWrapper{
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  background-color: $bg-white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.breadCrumblabel{
+  margin: 10px;
+  color: $text-grey;
+  text-align: left;
+  a{
+    color: $text-grey;
+    &:hover{
+      color: $text-orange;
+    }
+  }
+
+}
