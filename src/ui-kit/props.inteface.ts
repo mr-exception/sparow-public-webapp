@@ -54,6 +54,13 @@ export interface IButtonProps {
   round?: boolean;
   onClick?: () => void;
 }
+
+export interface IAvatarProps {
+  children?: any;
+  size: number;
+  round?: boolean;
+  onClick?: () => void;
+}
 export interface IIconButtonProps {
   icon?: any;
   children?: any;

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { ITextInputProps } from "./props.inteface";
 import Styles from "./TextInput.module.scss";
 
-const TextInput = ({
+const TextInput:React.FC<ITextInputProps> = ({
   value = "",
-  onChange = () => {},
+  onChange = () => {
+    // do nothing.
+  },
   label = "label",
   disabled = false,
   type = "text",

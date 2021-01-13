@@ -9,6 +9,9 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Home from "./containers/Home/Home";
+import Dashboard from "./containers/Dashboard/Layout";
+import Profile from "./containers/Dashboard/Profile";
+import Main from "./containers/Dashboard/Main";
 import Context from "Context";
 import { emptyProfile } from "sparow-api/dist/interfaces/profile";
 const Component = () => {
@@ -52,6 +55,16 @@ const Component = () => {
           </Route>
           <Route path="/reset-password">
             <ResetPassword />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard>
+              <Main />
+            </Dashboard>
+          </Route>
+          <Route path="/profile">
+            <Dashboard>
+              <Profile />
+            </Dashboard>
           </Route>
           <Redirect from="/" to="/login" />
         </Switch>

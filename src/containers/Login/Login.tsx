@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from "ui-kit/Botton";
-import Card from "ui-kit/Card";
+import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
@@ -48,7 +48,7 @@ const Component = () => {
         <Space height="45px" />
         <Card>
           {/* start of card header */}
-          <Card.Header>
+          <CardHeader>
             <Row align="center">
               <Col col={12}>
                 <Image
@@ -64,11 +64,11 @@ const Component = () => {
                 login to access your information
               </Col>
             </Row>
-          </Card.Header>
+          </CardHeader>
           {/* end of card header */}
 
           {/* start of card body */}
-          <Card.Body>
+          <CardBody>
             <Row align="start">
               {login_failed ? (
                 <Col col={12} className={Styles.authError}>
@@ -130,10 +130,10 @@ const Component = () => {
                 </Link>
               </Col>
             </Row>
-          </Card.Body>
+          </CardBody>
           {/* end of card body */}
           {/* start of card footer */}
-          <Card.Footer>
+          <CardFooter>
             <Row align="center">
               <Col
                 lg={8}
@@ -172,7 +172,7 @@ const Component = () => {
                 </Row>
               </Col>
             </Row>
-          </Card.Footer>
+          </CardFooter>
           {/* end of card footer */}
         </Card>
       </Col>
