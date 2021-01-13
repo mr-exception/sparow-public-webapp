@@ -7,7 +7,9 @@ export default createContext<IContext>({
   sparow: new Sparow("http://localhost:5000/api", "ws://localhost:5003"),
   user: emptyProfile,
   authChanged: new Subject<void>(),
-  unauthorize: () => {},
+  unauthorize: () => {
+    console.log("unauthorize");
+  },
 });
 interface IContext {
   sparow: Sparow;

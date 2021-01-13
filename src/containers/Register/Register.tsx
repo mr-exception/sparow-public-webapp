@@ -11,7 +11,7 @@ import Styles from "./Register.module.scss";
 import Context from "Context";
 import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
 import { IProfile } from "sparow-api/dist/interfaces/profile";
-const Component = () => {
+const Component: React.FC = () => {
   const context = useContext(Context);
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");

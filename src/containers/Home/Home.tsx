@@ -6,7 +6,7 @@ import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import { emptyProfile, IProfile } from "sparow-api/dist/interfaces/profile";
 
-const Component = () => {
+const Component: React.FC = () => {
   const context = useContext(Context);
   const [user, set_user] = useState<IProfile>(emptyProfile);
   const submit = async () => {

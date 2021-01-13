@@ -12,7 +12,7 @@ import { IProfile } from "sparow-api/dist/interfaces/profile";
 import Context from "Context";
 import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
 import { AuthError } from "sparow-api/dist/errors/auth";
-const Component = () => {
+const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
   const [errors, set_errors] = useState<{ [key: string]: string[] }>({});

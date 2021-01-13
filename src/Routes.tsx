@@ -14,7 +14,7 @@ import Profile from "./containers/Dashboard/Profile";
 import Main from "./containers/Dashboard/Main";
 import Context from "Context";
 import { emptyProfile } from "sparow-api/dist/interfaces/profile";
-const Component = () => {
+const Component: React.FC = () => {
   const context = useContext(Context);
   const [auth_status, set_auth_status] = useState<boolean>(false);
   context.authChanged.subscribe(() => {
