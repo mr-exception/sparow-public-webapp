@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "ui-kit/Botton";
-import {Card,CardHeader,CardBody,CardFooter} from "ui-kit/Card";
+import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
-import TextInput from "ui-kit/TextInput";
+import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
-const Component:React.FC = () => {
+import Context from "Context";
+import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
+import { IProfile } from "sparow-api/dist/interfaces/profile";
+const Component: React.FC = () => {
+  const context = useContext(Context);
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
-  const [phone_number, set_phone_number] = useState<string>("");
+  const [phone, set_phone] = useState<string>("");
   const [password, set_password] = useState<string>("");
+  const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
+  const submit = async () => {
+    set_errors({});
+    try {
+      if (context.sparow) {
+        const result: IProfile = await context.sparow.registerPlain({
+          username,
+          email,
+          phone,
+          password,
+        });
+        context.user = result;
+        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("auth_token", result.access_token);
+        localStorage.setItem("expires_at", result.expires_at.toString());
+        context.authChanged.next();
+      }
+    } catch (error) {
+      if (error instanceof ApiValidationError) {
+        set_errors(error.errors);
+      }
+    }
+  };
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>
@@ -56,6 +83,7 @@ const Component:React.FC = () => {
                   //   </IconContext.Provider>
                   // }
                   type="text"
+                  errors={errors?.username}
                 />
               </Col>
               <Col col={12}>
@@ -65,15 +93,17 @@ const Component:React.FC = () => {
                   label="Email"
                   // icon={<FaLock />}
                   type="email"
+                  errors={errors?.email}
                 />
               </Col>
               <Col col={12}>
                 <TextInput
-                  value={phone_number}
-                  onChange={set_phone_number}
+                  value={phone}
+                  onChange={set_phone}
                   label="Phone Number"
                   // icon={<FaLock />}
                   type="text"
+                  errors={errors?.phone}
                 />
               </Col>
               <Col col={12}>
@@ -83,10 +113,13 @@ const Component:React.FC = () => {
                   label="Password"
                   // icon={<FaLock />}
                   type="password"
+                  errors={errors?.password}
                 />
               </Col>
               <Col className={Styles.mt25} col={12}>
-                <Button fullWidth={true}>Register</Button>
+                <Button onClick={submit} fullWidth={true}>
+                  Register
+                </Button>
               </Col>
               <Col
                 col={12}

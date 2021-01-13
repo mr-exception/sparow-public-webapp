@@ -1,12 +1,13 @@
 import React from "react";
 import { ILinkProps } from "./props.inteface";
+import {Link as RouterLink} from "react-router-dom";
 import Styles from "./Link.module.scss";
 
 const Link:React.FC<ILinkProps> = ({ children, url, target, style }: ILinkProps) => {
   return (
-    <a href={url} className={Styles.link} style={style} target={target}>
+    <RouterLink to={url} className={Styles.link} style={style} target={target}>
       {children}
-    </a>
+    </RouterLink>
   );
 };
 export default Link;

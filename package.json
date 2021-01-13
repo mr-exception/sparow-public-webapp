@@ -19,7 +19,10 @@
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "rxjs": "^6.6.3",
     "socket.io-client": "^2.3.0",
+    "sparow-api": "git+https://github.com/salimon-dev/sparow-api.git",
+    "web-vitals": "^0.2.4",
     "typescript": "^3.2.1"
   },
   "scripts": {
@@ -48,6 +51,8 @@
     ]
   },
   "devDependencies": {
+    "ts-loader": "^8.0.12",
+    "typescript": "^3.9.7",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
     "eslint": "^7.16.0",

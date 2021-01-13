@@ -1,16 +1,47 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "ui-kit/Botton";
-import {Card,CardHeader,CardBody,CardFooter} from "ui-kit/Card";
+import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
-import TextInput from "ui-kit/TextInput";
+import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-const Component:React.FC = () => {
+import { IProfile } from "sparow-api/dist/interfaces/profile";
+import Context from "Context";
+import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
+import { AuthError } from "sparow-api/dist/errors/auth";
+const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
+  const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
+  const [login_failed, set_login_failed] = useState<boolean>(false);
+  const context = useContext(Context);
+  const submit = async () => {
+    set_errors({});
+    set_login_failed(false);
+    try {
+      if (context.sparow) {
+        const result: IProfile = await context.sparow.login({
+          username,
+          password,
+        });
+        context.user = result;
+        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("auth_token", result.access_token);
+        localStorage.setItem("expires_at", result.expires_at.toString());
+        context.authChanged.next();
+      }
+    } catch (error) {
+      if (error instanceof ApiValidationError) {
+        set_errors(error.errors);
+      }
+      if (error instanceof AuthError) {
+        set_login_failed(true);
+      }
+    }
+  };
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>
@@ -39,12 +70,18 @@ const Component:React.FC = () => {
           {/* start of card body */}
           <CardBody>
             <Row align="start">
+              {login_failed ? (
+                <Col col={12} className={Styles.authError}>
+                  incorrect username and password
+                </Col>
+              ) : null}
               <Col col={12}>
                 <TextInput
                   value={username}
                   onChange={set_username}
                   label="Username"
                   type="text"
+                  errors={errors?.username}
                 />
               </Col>
               <Col col={12}>
@@ -54,6 +91,7 @@ const Component:React.FC = () => {
                   label="Password"
                   // icon={<FaLock />}
                   type="password"
+                  errors={errors?.password}
                 />
                 <br />
                 <Link
@@ -67,7 +105,9 @@ const Component:React.FC = () => {
                 </Link>
               </Col>
               <Col className={Styles.mt25} col={12}>
-                <Button fullWidth={true}>Login</Button>
+                <Button fullWidth={true} onClick={submit}>
+                  Login
+                </Button>
               </Col>
               <Col
                 col={12}
@@ -84,7 +124,7 @@ const Component:React.FC = () => {
                   style={{
                     fontWeight: "bold",
                   }}
-                  url={"#"}
+                  url="/register"
                 >
                   Create an Account
                 </Link>
