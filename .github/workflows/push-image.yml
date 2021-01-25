@@ -32,6 +32,7 @@ jobs:
         with:
           namespace: mr-exception
       - name: Deploy Stack
-        uses: okteto/apply@master
+        uses: okteto/deploy-stack@v4.1
         with:
-          manifest: okteto-stack.yml
+          build: true
+          namespace: mr-exception
