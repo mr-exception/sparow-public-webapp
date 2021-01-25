@@ -1,6 +1,6 @@
-name: bell
+name: sparow-public-webapp
 services:
-  bell:
+  sparow-public-webapp:
     public: true
     image: salimondev/sparow-public-webapp:latest
     replicas: 1
