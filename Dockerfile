@@ -10,6 +10,4 @@ RUN yarn global add serve
 
 RUN npm run build
 
-RUN serve -s build
-
 CMD ["serve", "-s", "build"]
