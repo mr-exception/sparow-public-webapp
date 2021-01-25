@@ -4,13 +4,10 @@ services:
     container_name: public-webapp
     build:
       context: ./
-      dockerfile: ./Dockerfile.development
+      dockerfile: ./Dockerfile
     restart: always
-    volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
     ports:
-      - 5001:3000
+      - 5000:5000
     networks:
       - sparow-core
     stdin_open: true

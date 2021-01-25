@@ -2,7 +2,7 @@ name: sparow-public-webapp
 services:
   sparow-public-webapp:
     public: true
-    image: salimondev/sparow-public-webapp:latest
+    image: okteto.dev/sparow-public-webapp
     replicas: 1
     ports:
       - 5000
