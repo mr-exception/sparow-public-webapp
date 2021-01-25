@@ -1,0 +1,11 @@
+name: bell
+services:
+  bell:
+    public: true
+    image: salimondev/sparow-public-webapp:latest
+    replicas: 1
+    ports:
+      - 3000
+    resources:
+      cpu: 100m
+      memory: 128Mi
