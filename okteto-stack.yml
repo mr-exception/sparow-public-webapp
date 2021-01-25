@@ -5,7 +5,7 @@ services:
     image: salimondev/sparow-public-webapp:latest
     replicas: 1
     ports:
-      - 3000
+      - 5000
     resources:
       cpu: 100m
       memory: 128Mi

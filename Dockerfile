@@ -6,6 +6,10 @@ COPY ./ ./
 
 RUN yarn
 
-EXPOSE 3000
+RUN yarn global add serve
 
-CMD ["npm", "build"]
+RUN npm run build
+
+RUN serve -s build
+
+CMD ["serve", "-s", "build"]
