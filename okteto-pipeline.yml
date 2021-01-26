@@ -1,4 +1,0 @@
-icon: https://apps.okteto.com/movies/icon.png
-deploy:
-  - okteto build -t okteto.dev/sparow-public-webapp
-  - okteto stack deploy --wait
