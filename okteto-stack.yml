@@ -2,7 +2,7 @@ name: sparow-public-webapp
 services:
   sparow-public-webapp:
     public: true
-    image: sparow-public-webapp:latest
+    image: salimondev/sparow-public-webapp:latest
     replicas: 1
     ports:
       - 5000
