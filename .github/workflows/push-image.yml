@@ -23,16 +23,5 @@ jobs:
         with:
           tags: salimondev/sparow-public-webapp:latest
           push: true
-      - name: Login to Okteto
-        uses: okteto/login@master
-        with:
-          token: ${{ secrets.OKTETO_TOKEN }}
-      - name: Activate Namespace
-        uses: okteto/namespace@v4.1
-        with:
-          namespace: mr-exception
-      - name: Deploy Stack
-        uses: okteto/deploy-stack@v4.1
-        with:
-          build: true
-          namespace: mr-exception
+      - name: Install packages
+        run: yarn
