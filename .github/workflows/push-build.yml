@@ -21,6 +21,6 @@ jobs:
         with:
           local: ./build
           remote: /var/www/sparow/webapp
-          host: 37.152.179.95
-          user: ubuntu
-          password: "}(G9u.BTd7Yrwq4F"
+          host: ${{ secrets.SERVER_IP }}
+          user: ${{ secrets.SERVER_SSH_UBUNTU }}
+          password: ${{ secrets.SERVER_SSH_PASSWORD }}
