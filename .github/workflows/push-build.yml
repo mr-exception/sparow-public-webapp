@@ -24,6 +24,6 @@ jobs:
           password: ${{ secrets.SERVER_FTP_PASSWORD }}
           port: 21
           protocol: ftp
-          local-dir: build/
+          local-dir: /build/
           server-dir: /var/www/sparow/public-webapp/
           dry-run: true
