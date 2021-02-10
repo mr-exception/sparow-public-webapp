@@ -5,17 +5,23 @@ on:
     branches: [main]
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x]
-
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 15.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 15.x
       - run: yarn
       - run: npm run build --if-present
+      - name: deploy by ftp
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_FTP_USERNAME }}
+          password: ${{ secrets.SERVER_FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: build/
+          server-dir: /var/www/sparow/public-webapp
+          dry-run: true
