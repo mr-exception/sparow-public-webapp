@@ -30,12 +30,4 @@ jobs:
           # The local folder to copy
           local_source_dir: ./build
           # The remote folder
-          dist_target_dir: /var/www/sparow/webapp
-      # - name: deploy-via-scp
-      #   uses: horochx/deploy-via-scp@v1.0.1
-      #   with:
-      #     local: ./build
-      #     remote: /var/www/sparow/webapp
-      #     host: ${{ secrets.SERVER_IP }}
-      #     user: ${{ secrets.SERVER_SSH_USERNAME }}
-      #     key: ${{ secrets.SERVER_SSH_KEY }}
+          dist_target_dir: /var/www/sparow/public-webapp
