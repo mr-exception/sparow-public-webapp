@@ -16,12 +16,11 @@ jobs:
         run: yarn
       - name: Build the project
         run: npm run build --if-present
-      - name: ssh-scp-deploy
-        uses: marcodallasanta/ssh-scp-deploy@v.1.0.2
+      - name: deploy-via-scp
+        uses: horochx/deploy-via-scp@v1.0.1
         with:
           local: ./build
           remote: /var/www/sparow/webapp
           host: ${{ secrets.SERVER_IP }}
           user: ${{ secrets.SERVER_SSH_USERNAME }}
-          password: ${{ secrets.SERVER_SSH_PASSWORD }}
           key: ${{ secrets.SERVER_SSH_KEY }}
