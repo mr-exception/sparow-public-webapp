@@ -24,3 +24,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           user: ${{ secrets.SERVER_SSH_USERNAME }}
           password: ${{ secrets.SERVER_SSH_PASSWORD }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
