@@ -22,5 +22,5 @@ jobs:
           local: ./build
           remote: /var/www/sparow/webapp
           host: ${{ secrets.SERVER_IP }}
-          user: ${{ secrets.SERVER_SSH_UBUNTU }}
+          user: ${{ secrets.SERVER_SSH_USERNAME }}
           password: ${{ secrets.SERVER_SSH_PASSWORD }}
