@@ -16,11 +16,26 @@ jobs:
         run: yarn
       - name: Build the project
         run: npm run build --if-present
-      - name: deploy-via-scp
-        uses: horochx/deploy-via-scp@v1.0.1
+      - name: Simple FTP deploy
+        # You may pin to the exact commit or the version.
+        # uses: kevinpainchaud/simple-ftp-deploy-action@2c6e7dfe809abd4f8f687a78b5d79efaf5c439ad
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-          local: ./build
-          remote: /var/www/sparow/webapp
-          host: ${{ secrets.SERVER_IP }}
-          user: ${{ secrets.SERVER_SSH_USERNAME }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          # FTP host
+          ftp_host: ${{ secrets.SERVER_IP }}
+          # FTP username
+          ftp_username: ${{ secrets.SERVER_FTP_USERNAME }}
+          # FTP password
+          ftp_password: ${{ secrets.SERVER_FTP_PASSWORD }}
+          # The local folder to copy
+          local_source_dir: ./build
+          # The remote folder
+          dist_target_dir: /var/www/sparow/webapp
+      # - name: deploy-via-scp
+      #   uses: horochx/deploy-via-scp@v1.0.1
+      #   with:
+      #     local: ./build
+      #     remote: /var/www/sparow/webapp
+      #     host: ${{ secrets.SERVER_IP }}
+      #     user: ${{ secrets.SERVER_SSH_USERNAME }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
