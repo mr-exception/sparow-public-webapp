@@ -74,7 +74,12 @@ const Component: React.FC = () => {
             </Layout>
           </Route>
           <Route path="/profile">
-            <Layout location={[{ name: "Profile", route: "/profile" }]}>
+            <Layout
+              location={[
+                { name: "Home", route: "/home" },
+                { name: "Profile", route: "/profile" },
+              ]}
+            >
               <Profile />
             </Layout>
           </Route>

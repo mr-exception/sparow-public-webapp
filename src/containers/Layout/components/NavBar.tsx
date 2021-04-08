@@ -9,11 +9,12 @@ import Avatar from "ui-kit/Avatar";
 import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
-import { useDispatch } from "react-redux";
-import { IAuthAction } from "types/storeActions";
+import { useDispatch, useSelector } from "react-redux";
+import { IAuthAction, IAuthState } from "types/storeActions";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
+  const profile = useSelector((state: IAuthState) => state.profile);
   const listItems: IListItem[] = [
     { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
@@ -46,7 +47,7 @@ const NavBar: React.FC = () => {
     avatar = (
       <DropDown list={listItems}>
         <Avatar size={45} round={true}>
-          test
+          {profile?.username}
         </Avatar>
       </DropDown>
     );

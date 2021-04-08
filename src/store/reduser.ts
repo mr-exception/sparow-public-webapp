@@ -9,7 +9,8 @@ const reducer = (
 ): IAuthState => {
   switch (action.type) {
     case "LOG_IN":
-      return { loggedIn: true, profile: state.profile };
+      console.log(action);
+      return { loggedIn: true, profile: action.profile };
     case "LOG_OUT":
       return { loggedIn: false };
     default:

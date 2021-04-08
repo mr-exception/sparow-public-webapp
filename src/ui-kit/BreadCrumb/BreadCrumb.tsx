@@ -19,14 +19,13 @@ const BreadCrumb: React.FC<IProps> = ({ location }: IProps) => {
       >
         <Col lg={12} md={12} sm={12} xs={12}>
           <h5 className={Styles.breadCrumblabel}>
-            {location.map((step, index) => (
-              <>
+            {location
+              .map<React.ReactNode>((step, index) => (
                 <Link key={index} to={step.route}>
                   {step.name}
                 </Link>
-                {" / "}
-              </>
-            ))}
+              ))
+              .reduce((prev, cur) => [prev, " / ", cur])}
           </h5>
         </Col>
       </Row>
