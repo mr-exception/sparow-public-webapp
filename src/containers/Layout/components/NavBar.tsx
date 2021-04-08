@@ -9,13 +9,22 @@ import Avatar from "ui-kit/Avatar";
 import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
+import { useDispatch } from "react-redux";
+import { IAuthAction } from "types/storeActions";
 
 const NavBar: React.FC = () => {
+  const dispatch = useDispatch();
   const listItems: IListItem[] = [
     { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
     { label: "applications", url: "/applications" },
-    { label: "logout", url: "/logout", icon: <FaSignOutAlt /> },
+    {
+      label: "logout",
+      onClick: () => {
+        dispatch<IAuthAction>({ type: "LOG_OUT" });
+      },
+      icon: <FaSignOutAlt />,
+    },
   ];
   const [mobile, setMobile] = useState(() =>
     window.innerWidth < 640 ? true : false

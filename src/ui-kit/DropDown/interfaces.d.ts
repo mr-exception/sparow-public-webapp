@@ -1,5 +1,6 @@
 interface IListItem {
   label: string;
-  url: string;
+  url?: string;
+  onClick?: () => void;
   icon?: any;
 }

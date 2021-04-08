@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Routes from "./Routes";
 import Echo from "laravel-echo";
 import io from "socket.io-client";
+import Store from "./store/store";
+import { Provider } from "react-redux";
 const echo = new Echo({
   broadcaster: "socket.io",
   client: io,
@@ -15,7 +17,9 @@ echo.channel("plain-message").listen("PlainMessage", (e: any) => {
 });
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <Provider store={Store}>
+      <Routes />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

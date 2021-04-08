@@ -12,12 +12,15 @@ import Context from "Context";
 import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
+import { useDispatch } from "react-redux";
+import { IAuthAction } from "types/storeActions";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
   const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
   const [login_failed, set_login_failed] = useState<boolean>(false);
   const context = useContext(Context);
+  const dispatch = useDispatch();
   const submit = async () => {
     set_errors({});
     set_login_failed(false);
@@ -32,7 +35,7 @@ const Component: React.FC = () => {
         localStorage.setItem("user", JSON.stringify(result));
         localStorage.setItem("auth_token", result.access_token);
         localStorage.setItem("expires_at", result.expires_at.toString());
-        context.authChanged.next();
+        dispatch<IAuthAction>({ type: "LOG_IN", profile: result });
       }
     } catch (error) {
       if (error instanceof ApiValidationError) {

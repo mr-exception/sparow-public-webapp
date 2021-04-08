@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar";
-import BreadCrumb from "./components/BreadCrumb";
+import BreadCrumb from "../../ui-kit/BreadCrumb/BreadCrumb";
 import Styles from "./Layout.module.scss";
 import Space from "ui-kit/Space";
 interface IProps {

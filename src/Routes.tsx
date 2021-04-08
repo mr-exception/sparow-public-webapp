@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,12 +13,16 @@ import Profile from "./containers/Layout/Profile";
 import Context from "Context";
 import { emptyProfile } from "api/interfaces/profile";
 import Main from "containers/Main/Main";
+import { shallowEqual, useSelector } from "react-redux";
+import { IAuthState } from "types/storeActions";
 const Component: React.FC = () => {
   const context = useContext(Context);
-  const [auth_status, set_auth_status] = useState<boolean>(false);
-  context.authChanged.subscribe(() => {
-    set_auth_status(context.user.id !== "test");
-  });
+
+  const loggedIn = useSelector(
+    (state: IAuthState) => state.loggedIn,
+    shallowEqual
+  );
+
   context.unauthorize = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("auth_token");
@@ -39,8 +43,8 @@ const Component: React.FC = () => {
       context.authChanged.next();
     }
   }, [context]);
-  console.log(auth_status);
-  if (!auth_status) {
+
+  if (!loggedIn) {
     return (
       <Router>
         <Switch>

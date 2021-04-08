@@ -23,18 +23,32 @@ const DropDown: React.FC<IDropDownProps> = ({
   if (visiblity) {
     dropDownContainer = (
       <ul className={Styles.dropDownWrapper}>
-        {list.map((item, index) => (
-          <RouteLink
-            key={index}
-            to={item.url}
-            style={{ color: "#8a8989", textDecoration: "none" }}
-          >
+        {list.map((item, index) => {
+          const content = (
             <li className={Styles.dropDownItem} key={index}>
               <div className={Styles.text}>{item.label}</div>
               {item.icon ? <div className={Styles.icon}>{item.icon}</div> : ""}
             </li>
-          </RouteLink>
-        ))}
+          );
+          if (item.url)
+            return (
+              <RouteLink
+                key={index}
+                to={item.url}
+                style={{ color: "#8a8989", textDecoration: "none" }}
+              >
+                {content}
+              </RouteLink>
+            );
+          if (item.onClick) {
+            return (
+              <div key={index} onClick={item.onClick}>
+                {content}
+              </div>
+            );
+          }
+          return null;
+        })}
       </ul>
     );
     overlay = (
