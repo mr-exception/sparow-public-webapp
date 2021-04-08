@@ -1,10 +1,10 @@
+import { AuthError } from "api/errors/auth";
+import { emptyProfile, IProfile } from "api/interfaces/profile";
 import Context from "Context";
 import React, { useContext, useState, useEffect } from "react";
-import { AuthError } from "sparow-api/dist/errors/auth";
 import Button from "ui-kit/Botton";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
-import { emptyProfile, IProfile } from "sparow-api/dist/interfaces/profile";
 
 const Component: React.FC = () => {
   const context = useContext(Context);

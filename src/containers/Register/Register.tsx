@@ -9,8 +9,8 @@ import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
 import Context from "Context";
-import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
-import { IProfile } from "sparow-api/dist/interfaces/profile";
+import { IProfile } from "api/interfaces/profile";
+import { ApiValidationError } from "api/errors/api-validation";
 const Component: React.FC = () => {
   const context = useContext(Context);
   const [username, set_username] = useState<string>("");
@@ -27,6 +27,7 @@ const Component: React.FC = () => {
           email,
           phone,
           password,
+          scopes: ["applications"],
         });
         context.user = result;
         localStorage.setItem("user", JSON.stringify(result));

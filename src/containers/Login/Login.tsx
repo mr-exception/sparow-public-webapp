@@ -8,10 +8,10 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-import { IProfile } from "sparow-api/dist/interfaces/profile";
 import Context from "Context";
-import { ApiValidationError } from "sparow-api/dist/errors/api-validation";
-import { AuthError } from "sparow-api/dist/errors/auth";
+import { IProfile } from "api/interfaces/profile";
+import { ApiValidationError } from "api/errors/api-validation";
+import { AuthError } from "api/errors/auth";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
@@ -26,6 +26,7 @@ const Component: React.FC = () => {
         const result: IProfile = await context.sparow.login({
           username,
           password,
+          scopes: ["applications"],
         });
         context.user = result;
         localStorage.setItem("user", JSON.stringify(result));

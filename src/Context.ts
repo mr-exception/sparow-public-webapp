@@ -1,12 +1,13 @@
+import Sparow from "api/Sparow";
+import { emptyProfile, IProfile } from "api/interfaces/profile";
 import { createContext } from "react";
 import { Subject } from "rxjs";
-import Sparow from "sparow-api";
-import { IProfile, emptyProfile } from "sparow-api/dist/interfaces/profile";
 
 export default createContext<IContext>({
   sparow: new Sparow(
-    "http://core.sparow.salimon.ir/api",
-    "ws://salimon.ir:5003"
+    "https://core.sparow.salimon.ir/api",
+    "ws://salimon.ir:5003",
+    "webapp"
   ),
   user: emptyProfile,
   authChanged: new Subject<void>(),

@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "@types/socket.io-client": "^1.4.34",
+    "axios": "^0.21.1",
     "laravel-echo": "^1.9.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
@@ -22,7 +23,6 @@
     "rxjs": "^6.6.3",
     "serve": "^11.3.2",
     "socket.io-client": "^2.3.0",
-    "sparow-api": "git+https://github.com/salimon-dev/sparow-api.git",
     "typescript": "^3.2.1",
     "web-vitals": "^0.2.4"
   },
