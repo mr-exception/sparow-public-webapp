@@ -8,12 +8,11 @@ import {
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
-import Home from "./containers/Home/Home";
-import Dashboard from "./containers/Dashboard/Layout";
-import Profile from "./containers/Dashboard/Profile";
-import Main from "./containers/Dashboard/Main";
+import Layout from "./containers/Layout/Layout";
+import Profile from "./containers/Layout/Profile";
 import Context from "Context";
 import { emptyProfile } from "api/interfaces/profile";
+import Main from "containers/Main/Main";
 const Component: React.FC = () => {
   const context = useContext(Context);
   const [auth_status, set_auth_status] = useState<boolean>(false);
@@ -40,6 +39,7 @@ const Component: React.FC = () => {
       context.authChanged.next();
     }
   }, [context]);
+  console.log(auth_status);
   if (!auth_status) {
     return (
       <Router>
@@ -56,16 +56,6 @@ const Component: React.FC = () => {
           <Route path="/reset-password">
             <ResetPassword />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard>
-              <Main />
-            </Dashboard>
-          </Route>
-          <Route path="/profile">
-            <Dashboard>
-              <Profile />
-            </Dashboard>
-          </Route>
           <Redirect from="/" to="/login" />
         </Switch>
       </Router>
@@ -75,7 +65,14 @@ const Component: React.FC = () => {
       <Router>
         <Switch>
           <Route path="/home">
-            <Home />
+            <Layout location={[{ name: "Home", route: "/home" }]}>
+              <Main />
+            </Layout>
+          </Route>
+          <Route path="/profile">
+            <Layout location={[{ name: "Profile", route: "/profile" }]}>
+              <Profile />
+            </Layout>
           </Route>
           <Redirect from="/" to="/home" />
         </Switch>
