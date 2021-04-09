@@ -5,7 +5,7 @@ import Row from "ui-kit/Row";
 import Image from "ui-kit/Image";
 import Link from "ui-kit/Link";
 import DropDown from "ui-kit/DropDown/DropDown";
-import Avatar from "ui-kit/Avatar";
+import Avatar from "ui-kit/Avatar/Avatar";
 import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
@@ -46,9 +46,11 @@ const NavBar: React.FC = () => {
   else {
     avatar = (
       <DropDown list={listItems}>
-        <Avatar size={45} round={true}>
-          {profile?.username}
-        </Avatar>
+        <Avatar
+          size={45}
+          round={true}
+          caption={profile?.username || "No Name"}
+        />
       </DropDown>
     );
   }

@@ -1,12 +1,16 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
-.avatar{
-  background-color:$light-salmon;
+.avatar {
+  background-color: $light-salmon;
   color: $dark-salmon;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // max-width: 100%;
+  // overflow: hidden;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -15,6 +19,6 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-.round{
+.round {
   border-radius: 100%;
 }
