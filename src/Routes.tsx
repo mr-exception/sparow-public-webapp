@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,29 +10,33 @@ import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Layout from "./containers/Layout/Layout";
 import Profile from "./containers/Layout/Profile";
-import Context from "Context";
 import Main from "containers/Main/Main";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { IAction, IState } from "types/storeActions";
+import { setSparow } from "store/actions";
+import Sparow from "api/Sparow";
 const Component: React.FC = () => {
-  const context = useContext(Context);
-
   const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
   const dispatch = useDispatch();
+
+  // initialize auth informations
   useEffect(() => {
-    context.sparow.profile$.subscribe((profile) => {
-      context.user = profile;
-    });
+    // set sparow into store
+    const sparow = new Sparow(
+      "https://core.sparow.salimon.ir/api",
+      "ws://salimon.ir:5003",
+      "webapp"
+    );
+    dispatch<IAction>(setSparow(sparow));
+
+    // get user information from storage
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
     if (user_string && access_token) {
       const user = JSON.parse(user_string);
-      context.user = user;
-      context.sparow.setProfile(user, access_token);
-      context.authChanged.next();
       dispatch<IAction>({ type: "LOG_IN", profile: user });
     }
-  }, [context]);
+  }, []);
 
   if (!loggedIn) {
     return (

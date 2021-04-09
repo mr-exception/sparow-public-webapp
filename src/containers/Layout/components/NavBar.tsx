@@ -11,6 +11,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { IAction, IState } from "types/storeActions";
+import { removeUser } from "store/actions";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const NavBar: React.FC = () => {
     {
       label: "logout",
       onClick: () => {
-        dispatch<IAction>({ type: "LOG_OUT" });
+        dispatch<IAction>(removeUser());
       },
       icon: <FaSignOutAlt />,
     },

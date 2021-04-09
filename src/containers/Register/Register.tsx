@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Button from "ui-kit/Botton";
 import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
@@ -8,14 +8,14 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
-import Context from "Context";
 import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
-import { IAction } from "types/storeActions";
-import { useDispatch } from "react-redux";
+import { IAction, IState } from "types/storeActions";
+import { useDispatch, useSelector } from "react-redux";
 const Component: React.FC = () => {
   const dispatch = useDispatch();
-  const context = useContext(Context);
+  const sparow = useSelector((state: IState) => state.sparow);
+
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
@@ -24,15 +24,14 @@ const Component: React.FC = () => {
   const submit = async () => {
     set_errors({});
     try {
-      if (context.sparow) {
-        const result: IProfile = await context.sparow.registerPlain({
+      if (sparow) {
+        const result: IProfile = await sparow.registerPlain({
           username,
           email,
           phone,
           password,
           scopes: ["applications"],
         });
-        context.user = result;
         dispatch<IAction>({ type: "LOG_IN", profile: result });
       }
     } catch (error) {

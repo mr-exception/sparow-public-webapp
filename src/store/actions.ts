@@ -1,4 +1,5 @@
 import { IProfile } from "api/interfaces/profile";
+import Sparow from "api/Sparow";
 import { IAction } from "types/storeActions";
 
 // stores the user
@@ -15,4 +16,9 @@ export const removeUser = (): IAction => {
   localStorage.removeItem("auth_token");
   localStorage.removeItem("expires_at");
   return { type: "LOG_OUT" };
+};
+
+// set sparow
+export const setSparow = (sparow: Sparow): IAction => {
+  return { type: "SET_SPAROW", sparow };
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Button from "ui-kit/Botton";
 import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
@@ -8,32 +8,32 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-import Context from "Context";
 import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
-import { useDispatch } from "react-redux";
-import { IAction } from "types/storeActions";
+import { useDispatch, useSelector } from "react-redux";
+import { IAction, ILoggedInState } from "types/storeActions";
 import { storeUser } from "store/actions";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
   const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
+
   const [login_failed, set_login_failed] = useState<boolean>(false);
-  const context = useContext(Context);
+  const sparow = useSelector((state: ILoggedInState) => state.sparow);
+
   const dispatch = useDispatch();
+
   const submit = async () => {
     set_errors({});
     set_login_failed(false);
     try {
-      if (context.sparow) {
-        const result: IProfile = await context.sparow.login({
-          username,
-          password,
-          scopes: ["applications"],
-        });
-        dispatch<IAction>(storeUser(result));
-      }
+      const result: IProfile = await sparow.login({
+        username,
+        password,
+        scopes: ["applications"],
+      });
+      dispatch<IAction>(storeUser(result));
     } catch (error) {
       if (error instanceof ApiValidationError) {
         set_errors(error.errors);
