@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Button from "ui-kit/Botton";
-import {CardBody,CardFooter} from "ui-kit/Card";
+import Button from "ui-kit/Button/Botton";
+import { CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import TextInput from "ui-kit/TextInput/TextInput";
 import { FaPen } from "react-icons/fa";
 import { IVerifyPhoneStepProps } from "./props.interface";
-const VerifyPhoneStep:React.FC<IVerifyPhoneStepProps> = ({
+const VerifyPhoneStep: React.FC<IVerifyPhoneStepProps> = ({
   phone,
   goBack,
   submited,

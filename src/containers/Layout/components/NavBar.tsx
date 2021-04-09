@@ -32,14 +32,14 @@ const NavBar: React.FC = () => {
     window.innerWidth < 640 ? true : false
   );
 
-  useEffect(() => {
-    const handleResize = () =>
-      window.innerWidth < 640 ? setMobile(true) : setMobile(false);
+  // useEffect(() => {
+  //   const handleResize = () =>
+  //     window.innerWidth < 640 ? setMobile(true) : setMobile(false);
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  });
+  //   return () => window.removeEventListener("resize", handleResize);
+  // });
 
   let avatar;
 

@@ -6,9 +6,19 @@ const initialState: IState = {
 const reducer = (state: IState = initialState, action: IAction): IState => {
   switch (action.type) {
     case "LOG_IN":
-      return { loggedIn: true, profile: action.profile };
+      state.loggedIn = true;
+      state.profile = action.profile;
+      return state;
+
     case "LOG_OUT":
-      return { loggedIn: false };
+      state.loggedIn = false;
+      state.profile = undefined;
+      return state;
+
+    case "SET_SPAROW":
+      state.sparow = action.sparow;
+      return state;
+
     default:
       return state;
   }

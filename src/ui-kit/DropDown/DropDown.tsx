@@ -59,9 +59,9 @@ const DropDown: React.FC<IDropDownProps> = ({
     overlay = null;
   }
 
-  React.useEffect(() => {
-    setVisiblity(false);
-  }, [location]);
+  // React.useEffect(() => {
+  //   setVisiblity(false);
+  // }, [location]);
 
   return (
     <>

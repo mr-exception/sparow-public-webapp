@@ -1,5 +1,4 @@
 import React from "react";
-import { IButtonProps } from "./props.inteface";
 import Styles from "./Button.module.scss";
 
 const Button: React.FC<IButtonProps> = ({
@@ -7,6 +6,7 @@ const Button: React.FC<IButtonProps> = ({
   fullWidth,
   round,
   onClick,
+  loading = false,
 }: IButtonProps) => {
   let btn_classes = !round ? `${Styles.button}` : `${Styles.btnRound}`;
   if (fullWidth) {
@@ -15,7 +15,7 @@ const Button: React.FC<IButtonProps> = ({
 
   return (
     <button className={btn_classes} onClick={onClick}>
-      {children}
+      {loading ? "..." : children}
     </button>
   );
 };

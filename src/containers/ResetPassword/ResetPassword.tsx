@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {CardHeader,Card} from "ui-kit/Card";
+import { CardHeader, Card } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
 import Row from "ui-kit/Row";
@@ -11,7 +11,7 @@ import Styles from "./ResetPassword.module.scss";
 import SendStep from "./SendStep";
 import VerifyEmailState from "./VerifyEmailState";
 import VerifyPhoneStep from "./VerifyPhoneStep";
-const ResetPassword:React.FC = () => {
+const ResetPassword: React.FC = () => {
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
   const [method, set_method] = useState<"email" | "phone">("email");
@@ -24,14 +24,14 @@ const ResetPassword:React.FC = () => {
   const [token, set_token] = useState<string>("");
   // check if user is redirected with a parameter
   const paramToken = useParams<IResetPasswordParams>().token;
-  const didMount = () => {
-    if (paramToken) {
-      // first we have to validate the token. but it's just a mock view
-      set_token(paramToken);
-      set_step("password_change");
-    }
-  };
-  useEffect(didMount, [paramToken]);
+  // const didMount = () => {
+  //   if (paramToken) {
+  //     // first we have to validate the token. but it's just a mock view
+  //     set_token(paramToken);
+  //     set_step("password_change");
+  //   }
+  // };
+  // useEffect(didMount, [paramToken]);
   return (
     <Row align="center" verticalAlign="center">
       <Col lg={4} md={6} sm={8} xs={12}>

@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "ui-kit/Botton";
-import {CardBody,CardFooter} from "ui-kit/Card";
+import Button from "ui-kit/Button/Botton";
+import { CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import { useHistory } from "react-router-dom";
-const FinishStep:React.FC = () => {
+const FinishStep: React.FC = () => {
   const history = useHistory();
   return (
     <>

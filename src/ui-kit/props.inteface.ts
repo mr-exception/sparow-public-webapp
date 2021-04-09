@@ -48,12 +48,6 @@ export interface ICardBodyProps {
 export interface ICardFooterProps {
   children?: any;
 }
-export interface IButtonProps {
-  children?: any;
-  fullWidth?: boolean;
-  round?: boolean;
-  onClick?: () => void;
-}
 
 export interface IIconButtonProps {
   icon?: any;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "ui-kit/Botton";
+import Button from "ui-kit/Button/Botton";
 import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
@@ -12,15 +12,16 @@ import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { IAction, ILoggedInState } from "types/storeActions";
+import { IAction, IInitializedState } from "types/storeActions";
 import { storeUser } from "store/actions";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
   const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
+  const [loading, set_loading] = useState<boolean>(false);
 
   const [login_failed, set_login_failed] = useState<boolean>(false);
-  const sparow = useSelector((state: ILoggedInState) => state.sparow);
+  const sparow = useSelector((state: IInitializedState) => state.sparow);
 
   const dispatch = useDispatch();
 
@@ -28,13 +29,16 @@ const Component: React.FC = () => {
     set_errors({});
     set_login_failed(false);
     try {
+      set_loading(true);
       const result: IProfile = await sparow.login({
         username,
         password,
         scopes: ["applications"],
       });
       dispatch<IAction>(storeUser(result));
+      set_loading(false);
     } catch (error) {
+      set_loading(false);
       if (error instanceof ApiValidationError) {
         set_errors(error.errors);
       }
@@ -106,7 +110,7 @@ const Component: React.FC = () => {
                 </Link>
               </Col>
               <Col className={Styles.mt25} col={12}>
-                <Button fullWidth={true} onClick={submit}>
+                <Button fullWidth={true} onClick={submit} loading={loading}>
                   Login
                 </Button>
               </Col>

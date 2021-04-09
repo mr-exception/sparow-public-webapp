@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "store/actions";
 import { IAction, IState } from "types/storeActions";
-import Button from "ui-kit/Botton";
+import Button from "ui-kit/Button/Botton";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 

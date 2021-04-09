@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "ui-kit/Botton";
+import Button from "ui-kit/Button/Botton";
 import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
 import Image from "ui-kit/Image";
@@ -10,31 +10,34 @@ import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
 import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
-import { IAction, IState } from "types/storeActions";
+import { IAction, IInitializedState } from "types/storeActions";
 import { useDispatch, useSelector } from "react-redux";
 const Component: React.FC = () => {
   const dispatch = useDispatch();
-  const sparow = useSelector((state: IState) => state.sparow);
+  const sparow = useSelector((state: IInitializedState) => state.sparow);
 
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
   const [phone, set_phone] = useState<string>("");
   const [password, set_password] = useState<string>("");
   const [errors, set_errors] = useState<{ [key: string]: string[] }>({});
+  const [loading, set_loading] = useState<boolean>(false);
+
   const submit = async () => {
     set_errors({});
     try {
-      if (sparow) {
-        const result: IProfile = await sparow.registerPlain({
-          username,
-          email,
-          phone,
-          password,
-          scopes: ["applications"],
-        });
-        dispatch<IAction>({ type: "LOG_IN", profile: result });
-      }
+      set_loading(true);
+      const result: IProfile = await sparow.registerPlain({
+        username,
+        email,
+        phone,
+        password,
+        scopes: ["applications"],
+      });
+      dispatch<IAction>({ type: "LOG_IN", profile: result });
+      set_loading(false);
     } catch (error) {
+      set_loading(false);
       if (error instanceof ApiValidationError) {
         set_errors(error.errors);
       }
@@ -73,15 +76,6 @@ const Component: React.FC = () => {
                   value={username}
                   onChange={set_username}
                   label="Username"
-                  // icon={
-                  //   <IconContext.Provider
-                  //     value={{ color: "blue", size: "10px" }}
-                  //   >
-                  //     <div>
-                  //       <FaUser />
-                  //     </div>
-                  //   </IconContext.Provider>
-                  // }
                   type="text"
                   errors={errors?.username}
                 />
@@ -91,7 +85,6 @@ const Component: React.FC = () => {
                   value={email}
                   onChange={set_email}
                   label="Email"
-                  // icon={<FaLock />}
                   type="email"
                   errors={errors?.email}
                 />
@@ -101,7 +94,6 @@ const Component: React.FC = () => {
                   value={phone}
                   onChange={set_phone}
                   label="Phone Number"
-                  // icon={<FaLock />}
                   type="text"
                   errors={errors?.phone}
                 />
@@ -111,13 +103,12 @@ const Component: React.FC = () => {
                   value={password}
                   onChange={set_password}
                   label="Password"
-                  // icon={<FaLock />}
                   type="password"
                   errors={errors?.password}
                 />
               </Col>
               <Col className={Styles.mt25} col={12}>
-                <Button onClick={submit} fullWidth={true}>
+                <Button onClick={submit} fullWidth={true} loading={loading}>
                   Register
                 </Button>
               </Col>

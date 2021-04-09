@@ -28,7 +28,6 @@ const Component: React.FC = () => {
       "webapp"
     );
     dispatch<IAction>(setSparow(sparow));
-
     // get user information from storage
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
