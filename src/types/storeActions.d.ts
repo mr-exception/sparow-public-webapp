@@ -1,11 +1,16 @@
 import { IProfile } from "api/interfaces/profile";
+import Sparow from "api/Sparow";
 
-type IAuthAction = {
-  type: "LOG_IN" | "LOG_OUT";
+type ActionType = "LOG_IN" | "LOG_OUT" | "SET_SPAROW";
+
+type IAction = {
+  type: ActionType;
   profile?: IProfile;
+  sparow?: Sparow;
 };
-type IAuthState = {
+
+type IState = {
   profile?: IProfile;
   loggedIn: boolean;
 };
-type DispatchType = (args: IAuthAction) => IAuthAction;
+type DispatchType = (args: IAction) => IAction;

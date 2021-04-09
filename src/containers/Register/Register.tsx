@@ -11,7 +11,10 @@ import Styles from "./Register.module.scss";
 import Context from "Context";
 import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
+import { IAction } from "types/storeActions";
+import { useDispatch } from "react-redux";
 const Component: React.FC = () => {
+  const dispatch = useDispatch();
   const context = useContext(Context);
   const [username, set_username] = useState<string>("");
   const [email, set_email] = useState<string>("");
@@ -30,10 +33,7 @@ const Component: React.FC = () => {
           scopes: ["applications"],
         });
         context.user = result;
-        localStorage.setItem("user", JSON.stringify(result));
-        localStorage.setItem("auth_token", result.access_token);
-        localStorage.setItem("expires_at", result.expires_at.toString());
-        context.authChanged.next();
+        dispatch<IAction>({ type: "LOG_IN", profile: result });
       }
     } catch (error) {
       if (error instanceof ApiValidationError) {

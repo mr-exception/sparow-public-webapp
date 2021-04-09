@@ -11,25 +11,14 @@ import ResetPassword from "./containers/ResetPassword/ResetPassword";
 import Layout from "./containers/Layout/Layout";
 import Profile from "./containers/Layout/Profile";
 import Context from "Context";
-import { emptyProfile } from "api/interfaces/profile";
 import Main from "containers/Main/Main";
-import { shallowEqual, useSelector } from "react-redux";
-import { IAuthState } from "types/storeActions";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { IAction, IState } from "types/storeActions";
 const Component: React.FC = () => {
   const context = useContext(Context);
 
-  const loggedIn = useSelector(
-    (state: IAuthState) => state.loggedIn,
-    shallowEqual
-  );
-
-  context.unauthorize = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("auth_token");
-    localStorage.removeItem("expires_at");
-    context.user = emptyProfile;
-    context.authChanged.next();
-  };
+  const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
+  const dispatch = useDispatch();
   useEffect(() => {
     context.sparow.profile$.subscribe((profile) => {
       context.user = profile;
@@ -41,6 +30,7 @@ const Component: React.FC = () => {
       context.user = user;
       context.sparow.setProfile(user, access_token);
       context.authChanged.next();
+      dispatch<IAction>({ type: "LOG_IN", profile: user });
     }
   }, [context]);
 

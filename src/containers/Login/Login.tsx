@@ -13,7 +13,8 @@ import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
 import { useDispatch } from "react-redux";
-import { IAuthAction } from "types/storeActions";
+import { IAction } from "types/storeActions";
+import { storeUser } from "store/actions";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
@@ -31,11 +32,7 @@ const Component: React.FC = () => {
           password,
           scopes: ["applications"],
         });
-        context.user = result;
-        localStorage.setItem("user", JSON.stringify(result));
-        localStorage.setItem("auth_token", result.access_token);
-        localStorage.setItem("expires_at", result.expires_at.toString());
-        dispatch<IAuthAction>({ type: "LOG_IN", profile: result });
+        dispatch<IAction>(storeUser(result));
       }
     } catch (error) {
       if (error instanceof ApiValidationError) {

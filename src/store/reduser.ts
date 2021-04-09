@@ -1,15 +1,11 @@
-import { IAuthAction, IAuthState } from "types/storeActions";
+import { IAction, IState } from "types/storeActions";
 
-const initialState: IAuthState = {
+const initialState: IState = {
   loggedIn: false,
 };
-const reducer = (
-  state: IAuthState = initialState,
-  action: IAuthAction
-): IAuthState => {
+const reducer = (state: IState = initialState, action: IAction): IState => {
   switch (action.type) {
     case "LOG_IN":
-      console.log(action);
       return { loggedIn: true, profile: action.profile };
     case "LOG_OUT":
       return { loggedIn: false };

@@ -10,11 +10,11 @@ import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { IAuthAction, IAuthState } from "types/storeActions";
+import { IAction, IState } from "types/storeActions";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
-  const profile = useSelector((state: IAuthState) => state.profile);
+  const profile = useSelector((state: IState) => state.profile);
   const listItems: IListItem[] = [
     { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
     {
       label: "logout",
       onClick: () => {
-        dispatch<IAuthAction>({ type: "LOG_OUT" });
+        dispatch<IAction>({ type: "LOG_OUT" });
       },
       icon: <FaSignOutAlt />,
     },
