@@ -1,6 +1,5 @@
 import Axios, { AxiosInstance } from "axios";
 import { Subject } from "rxjs";
-import { IProfile } from "./interfaces/profile";
 import { plainLogin } from "./login";
 import { logout } from "./logout";
 import { plainRegsiter } from "./register";
@@ -23,6 +22,9 @@ import { remove as deleteSession } from "./sessions/remove";
 import { removeAll as deleteAllSessions } from "./sessions/removeAll";
 import { IPlainRegisterParams, IPlainLoginParams } from "./interfaces/auth";
 import Session from "./sessions/Session";
+import Profile from "./profile/Profile";
+import AuthProfile from "./profile/AuthProfile";
+import { IProfile } from "./profile/profile";
 
 export default class Sparow {
   constructor(
@@ -44,8 +46,7 @@ export default class Sparow {
   // axios object
   public axios: AxiosInstance;
   public socket: any;
-  public setProfile(user: IProfile, authToken: string): void {
-    this.profile$.next(user);
+  public setProfile(user: Profile, authToken: string): void {
     this.authToken = authToken;
     // subscribe to profile channel
     subProfile(this, user.id);
@@ -59,14 +60,14 @@ export default class Sparow {
    * @param username
    * @param password
    */
-  public login(data: IPlainLoginParams): Promise<IProfile> {
+  public login(data: IPlainLoginParams): Promise<AuthProfile> {
     return plainLogin(data, this);
   }
   /**
    * registers a new user into sparow as a plain user
    * @param data
    */
-  public registerPlain(data: IPlainRegisterParams): Promise<IProfile> {
+  public registerPlain(data: IPlainRegisterParams): Promise<AuthProfile> {
     return plainRegsiter(data, this);
   }
   /**

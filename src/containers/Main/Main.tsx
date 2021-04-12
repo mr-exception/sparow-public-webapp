@@ -3,14 +3,75 @@ import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import Wrapper from "ui-kit/Wrapper";
 import { Card, CardBody } from "ui-kit/Card";
+import Avatar from "ui-kit/Avatar/Avatar";
+import { useSelector } from "react-redux";
+import { ILoggedInState } from "types/storeActions";
+import Styles from "./Main.module.scss";
+import Profile from "api/profile/Profile";
+import { FaEdit } from "react-icons/fa";
 const Main: React.FC = () => {
+  const profile: Profile = useSelector(
+    (state: ILoggedInState) => state.profile
+  );
   return (
     <Wrapper>
       <Row align="center" verticalAlign="center">
-        <Col lg={12} md={12} sm={12} xs={12}>
+        <Col lg={8} md={8} sm={8} xs={12}>
           <Card>
             <CardBody>
-              <h1 style={{ height: "500px" }}>Dashboard Page</h1>
+              <Row align="center">
+                <Col lg={3} md={3} sm={6} xs={12}>
+                  <Avatar
+                    size="200px"
+                    caption={profile.username}
+                    round={true}
+                    src={profile.avatar}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col col={12} style={{ textAlign: "left", marginTop: "1rem" }}>
+                  <Row style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                    <Col className={Styles.propsName} col={4}>
+                      full name
+                    </Col>
+                    <Col col={7}>{profile.getfullName()}</Col>
+                    <Col className={Styles.editCol} col={1}>
+                      <FaEdit size={20} />
+                    </Col>
+                  </Row>
+                  <hr />
+                  <Row style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                    <Col className={Styles.propsName} col={4}>
+                      username
+                    </Col>
+                    <Col col={7}>{profile.getUsername()}</Col>
+                    <Col className={Styles.editCol} col={1}>
+                      <FaEdit size={20} />
+                    </Col>
+                  </Row>
+                  <hr />
+                  <Row style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                    <Col className={Styles.propsName} col={4}>
+                      phone
+                    </Col>
+                    <Col col={7}>{profile.getPhone()}</Col>
+                    <Col className={Styles.editCol} col={1}>
+                      <FaEdit size={20} />
+                    </Col>
+                  </Row>
+                  <hr />
+                  <Row style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                    <Col className={Styles.propsName} col={4}>
+                      email
+                    </Col>
+                    <Col col={7}>{profile.getEmail()}</Col>
+                    <Col className={Styles.editCol} col={1}>
+                      <FaEdit size={20} />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
             </CardBody>
           </Card>
         </Col>

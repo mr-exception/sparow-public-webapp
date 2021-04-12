@@ -9,23 +9,13 @@ export interface IProfile {
     number: string;
     verified: boolean;
   };
+  first_name: string;
+  last_name: string;
   avatar: string;
+  uploaded_avatar: boolean;
+}
+
+export interface IAuthProfile extends IProfile {
   access_token: string;
   expires_at: number;
 }
-
-export const emptyProfile: IProfile = {
-  id: "test",
-  username: "",
-  email: {
-    address: "",
-    verified: false,
-  },
-  phone: {
-    number: "",
-    verified: false,
-  },
-  avatar: "",
-  access_token: "",
-  expires_at: 0,
-};

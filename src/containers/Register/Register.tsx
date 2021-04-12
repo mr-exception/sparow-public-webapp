@@ -8,10 +8,10 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Register.module.scss";
-import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { IAction, IInitializedState } from "types/storeActions";
 import { useDispatch, useSelector } from "react-redux";
+import AuthProfile from "api/profile/AuthProfile";
 const Component: React.FC = () => {
   const dispatch = useDispatch();
   const sparow = useSelector((state: IInitializedState) => state.sparow);
@@ -27,7 +27,7 @@ const Component: React.FC = () => {
     set_errors({});
     try {
       set_loading(true);
-      const result: IProfile = await sparow.registerPlain({
+      const result: AuthProfile = await sparow.registerPlain({
         username,
         email,
         phone,

@@ -1,12 +1,9 @@
-import { IProfile } from "api/interfaces/profile";
+import Profile from "api/profile/Profile";
 import Sparow from "api/Sparow";
 import { IAction } from "types/storeActions";
 
 // stores the user
-export const storeUser = (profile: IProfile): IAction => {
-  localStorage.setItem("user", JSON.stringify(profile));
-  localStorage.setItem("auth_token", profile.access_token);
-  localStorage.setItem("expires_at", profile.expires_at.toString());
+export const storeUser = (profile: Profile): IAction => {
   return { type: "LOG_IN", profile };
 };
 

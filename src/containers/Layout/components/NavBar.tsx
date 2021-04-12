@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state: IState) => state.profile);
   const listItems: IListItem[] = [
-    { label: "profile", url: "/profile" },
+    // { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
     { label: "applications", url: "/applications" },
     {
@@ -48,7 +48,7 @@ const NavBar: React.FC = () => {
     avatar = (
       <DropDown list={listItems}>
         <Avatar
-          size={45}
+          size="45px"
           round={true}
           caption={profile?.username || "No Name"}
         />

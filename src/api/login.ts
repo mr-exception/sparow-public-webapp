@@ -5,18 +5,19 @@ import { catchAuthError } from "./errors/auth";
 import { catchNetworkError } from "./errors/network";
 import { catchNotFoundError } from "./errors/not-found";
 import { IPlainLoginParams } from "./interfaces/auth";
-import { IProfile } from "./interfaces/profile";
 import { subProfile } from "./socket-handlers/profile";
+import AuthProfile from "./profile/AuthProfile";
+import { IAuthProfile } from "./profile/profile";
 export function plainLogin(
   data: IPlainLoginParams,
   sparow: Sparow
-): Promise<IProfile> {
+): Promise<AuthProfile> {
   return sparow.axios
-    .post<{ user: IProfile }>(sparow.baseURL + "/login/plain", {
+    .post<{ user: IAuthProfile }>(sparow.baseURL + "/login/plain", {
       ...data,
       agent: sparow.agent,
     })
-    .then((response: AxiosResponse<{ user: IProfile }>) => {
+    .then((response: AxiosResponse<{ user: IAuthProfile }>) => {
       sparow.profile$.next(response.data.user);
       sparow.authToken = response.data.user.access_token;
       sparow.axios = Axios.create({
@@ -25,7 +26,7 @@ export function plainLogin(
       });
       // subscribe to profile channel
       subProfile(sparow, response.data.user.id);
-      return response.data.user;
+      return new AuthProfile(response.data.user, sparow);
     })
     .catch(catchApiValidationError)
     .catch(catchNotFoundError)

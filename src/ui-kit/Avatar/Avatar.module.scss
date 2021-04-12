@@ -7,10 +7,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  // text-overflow: ellipsis;
-  // white-space: nowrap;
-  // max-width: 100%;
-  // overflow: hidden;
+  margin: auto;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -21,4 +18,8 @@
 
 .round {
   border-radius: 100%;
+}
+
+.avatarImage {
+  width: 70%;
 }

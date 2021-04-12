@@ -1,6 +1,8 @@
 interface IAvatarProps {
   caption: string;
-  size: number;
+  src?: string;
+  size: string;
+  style?: any;
   round?: boolean;
   onClick?: () => void;
 }

@@ -8,12 +8,12 @@ import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
 import Link from "ui-kit/Link";
 import Styles from "./Login.module.scss";
-import { IProfile } from "api/interfaces/profile";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { IAction, IInitializedState } from "types/storeActions";
 import { storeUser } from "store/actions";
+import AuthProfile from "api/profile/AuthProfile";
 const Component: React.FC = () => {
   const [username, set_username] = useState<string>("");
   const [password, set_password] = useState<string>("");
@@ -30,11 +30,16 @@ const Component: React.FC = () => {
     set_login_failed(false);
     try {
       set_loading(true);
-      const result: IProfile = await sparow.login({
+      const result: AuthProfile = await sparow.login({
         username,
         password,
         scopes: ["applications"],
       });
+
+      localStorage.setItem("user", JSON.stringify(result.jsonObject()));
+      localStorage.setItem("auth_token", result.access_token);
+      localStorage.setItem("expires_at", result.expires_at.toString());
+
       dispatch<IAction>(storeUser(result));
       set_loading(false);
     } catch (error) {
