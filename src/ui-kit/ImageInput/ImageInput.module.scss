@@ -1,0 +1,38 @@
+@import "variables.scss";
+
+.conatiner {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $primary-background;
+  color: #7e7e7e;
+  margin-bottom: 10px;
+
+  // filename max length
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 1.4rem);
+  border-radius: 4px;
+  border-color: $primary-background;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+}
+
+.image {
+  width: 100%;
+}

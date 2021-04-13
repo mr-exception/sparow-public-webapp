@@ -88,6 +88,18 @@
   cursor: pointer;
 }
 
+.sizeSmall {
+  height: 35px;
+  text-transform: capitalize;
+}
+
+.sizeMedium {
+  height: 52px;
+}
+
+.sizeLarge {
+  height: 70px;
+}
 // .btnRound:hover{
 //   background-color: red;
 // }

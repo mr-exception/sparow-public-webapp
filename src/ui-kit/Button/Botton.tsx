@@ -7,10 +7,23 @@ const Button: React.FC<IButtonProps> = ({
   round,
   onClick,
   loading = false,
+  size = "medium",
 }: IButtonProps) => {
   let btn_classes = !round ? `${Styles.button}` : `${Styles.btnRound}`;
   if (fullWidth) {
     btn_classes += ` ${Styles.btnBlock}`;
+  }
+
+  switch (size) {
+    case "small":
+      btn_classes += " " + Styles.sizeSmall;
+      break;
+    case "medium":
+      btn_classes += " " + Styles.sizeMedium;
+      break;
+    case "large":
+      btn_classes += " " + Styles.sizeLarge;
+      break;
   }
 
   return (
