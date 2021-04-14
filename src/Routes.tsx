@@ -12,11 +12,10 @@ import Layout from "./containers/Layout/Layout";
 import Profile from "./containers/Layout/Profile";
 import Main from "containers/Main/Main";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { IAction, IState } from "types/storeActions";
+import { IState } from "types/storeActions";
 import { setSparow, storeUser } from "store/actions";
 import Sparow from "api/Sparow";
 import ProfileClass from "api/profile/Profile";
-import { IProfile } from "api/profile/profile";
 const Component: React.FC = () => {
   const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
   const dispatch = useDispatch();
@@ -29,17 +28,19 @@ const Component: React.FC = () => {
       "ws://salimon.ir:5003",
       "webapp"
     );
-    dispatch<IAction>(setSparow(sparow));
+    dispatch(setSparow(sparow));
     // get user information from storage
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
     if (user_string && access_token) {
       const user = JSON.parse(user_string) as IProfile;
 
+      sparow.setProfile(new ProfileClass(user, sparow), access_token);
+
       localStorage.setItem("user", JSON.stringify(user));
 
       const profile = new ProfileClass(user, sparow);
-      dispatch<IAction>(storeUser(profile));
+      dispatch(storeUser(profile));
     }
   }, []);
 

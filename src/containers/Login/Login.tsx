@@ -40,7 +40,7 @@ const Component: React.FC = () => {
       localStorage.setItem("auth_token", result.access_token);
       localStorage.setItem("expires_at", result.expires_at.toString());
 
-      dispatch<IAction>(storeUser(result));
+      dispatch(storeUser(result));
       set_loading(false);
     } catch (error) {
       set_loading(false);

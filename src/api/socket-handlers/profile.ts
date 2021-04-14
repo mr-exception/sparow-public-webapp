@@ -1,5 +1,4 @@
 import Sparow from "../Sparow";
-import { IProfile } from "../profile/profile";
 
 export const subProfile = (sparow: Sparow, userId: string): void => {
   sparow.socket.emit(

@@ -4,4 +4,5 @@ export interface IImageInputProps {
   label?: string;
   disabled?: boolean;
   errors?: string[];
+  cropToSqure?: boolean;
 }

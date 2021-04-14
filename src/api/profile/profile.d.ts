@@ -1,4 +1,4 @@
-export interface IProfile {
+interface IProfile {
   id: string;
   username: string;
   email: {
@@ -15,7 +15,18 @@ export interface IProfile {
   uploaded_avatar: boolean;
 }
 
-export interface IAuthProfile extends IProfile {
+interface IAuthProfile extends IProfile {
   access_token: string;
   expires_at: number;
+}
+
+// api request inputs
+interface IUpdateProfileParams {
+  username?: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  phone?: string;
+  password?: string;
+  avatar?: File;
 }

@@ -7,7 +7,6 @@ import { catchNotFoundError } from "./errors/not-found";
 import { IPlainLoginParams } from "./interfaces/auth";
 import { subProfile } from "./socket-handlers/profile";
 import AuthProfile from "./profile/AuthProfile";
-import { IAuthProfile } from "./profile/profile";
 export function plainLogin(
   data: IPlainLoginParams,
   sparow: Sparow

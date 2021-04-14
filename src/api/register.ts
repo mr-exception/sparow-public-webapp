@@ -5,7 +5,6 @@ import { catchAuthError } from "./errors/auth";
 import { catchNetworkError } from "./errors/network";
 import { catchNotFoundError } from "./errors/not-found";
 import { IPlainRegisterParams } from "./interfaces/auth";
-import { IAuthProfile } from "./profile/profile";
 import { subProfile } from "./socket-handlers/profile";
 import AuthProfile from "./profile/AuthProfile";
 export const plainRegsiter = async (

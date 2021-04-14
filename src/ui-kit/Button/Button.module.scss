@@ -1,5 +1,10 @@
 @import "../../variables.scss";
+
 .button {
+  :disabled {
+    background-color: $disabled-background;
+    color: $disabled-text;
+  }
   visibility: visible;
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;

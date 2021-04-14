@@ -24,7 +24,8 @@ import { IPlainRegisterParams, IPlainLoginParams } from "./interfaces/auth";
 import Session from "./sessions/Session";
 import Profile from "./profile/Profile";
 import AuthProfile from "./profile/AuthProfile";
-import { IProfile } from "./profile/profile";
+import { getProfile } from "./profile/getProfile";
+import { updateProfile } from "./profile/updateProfile";
 
 export default class Sparow {
   constructor(
@@ -124,5 +125,11 @@ export default class Sparow {
    */
   public deleteAllSessions(): Promise<boolean> {
     return deleteAllSessions(this);
+  }
+  public getProfile(): Promise<Profile> {
+    return getProfile(this);
+  }
+  public updateProfile(data: IUpdateProfileParams): Promise<Profile> {
+    return updateProfile(data, this);
   }
 }

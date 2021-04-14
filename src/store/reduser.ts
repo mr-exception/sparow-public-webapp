@@ -19,6 +19,10 @@ const reducer = (state: IState = initialState, action: IAction): IState => {
       state.sparow = action.sparow;
       return state;
 
+    case "UPDATE_USER":
+      state.profile = action.profile;
+      return state;
+
     default:
       return state;
   }

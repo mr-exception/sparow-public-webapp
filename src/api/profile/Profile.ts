@@ -1,6 +1,5 @@
 import Sparow from "api/Sparow";
 import { isEmptyString } from "utils";
-import { IProfile } from "./profile";
 
 export default class Profile {
   public id: string;

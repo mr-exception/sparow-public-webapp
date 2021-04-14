@@ -19,3 +19,8 @@ export const removeUser = (): IAction => {
 export const setSparow = (sparow: Sparow): IAction => {
   return { type: "SET_SPAROW", sparow };
 };
+
+// update profile information
+export const setProfile = (profile: Profile): IAction => {
+  return { type: "UPDATE_USER", profile };
+};

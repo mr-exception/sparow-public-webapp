@@ -1,6 +1,5 @@
 import Sparow from "api/Sparow";
 import Profile from "./Profile";
-import { IAuthProfile } from "./profile";
 
 export default class AuthProfile extends Profile {
   public access_token: string;

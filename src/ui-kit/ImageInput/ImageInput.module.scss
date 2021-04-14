@@ -1,32 +1,43 @@
-@import "variables.scss";
+@import "../../variables.scss";
 
-.conatiner {
+.container {
   display: flex;
   flex-direction: column;
+
+  cursor: pointer;
 }
 
 .input {
-  padding: 10px;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
   border-color: $primary-background;
-  color: #7e7e7e;
-  margin-bottom: 10px;
+  color: $text-primary;
 
-  // filename max length
-  overflow: hidden;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+  border-top-width: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+
+  display: flex;
+  flex-direction: row;
+
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+
+  background-color: $primary-background;
+  color: $text-white;
 }
-
 .imageContainer {
   display: flex;
   flex-direction: column;
   width: calc(100% - 1.4rem);
   border-radius: 4px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   border-color: $primary-background;
   border-style: solid;
   border-width: 1px;

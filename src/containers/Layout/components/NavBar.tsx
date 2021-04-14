@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Styles from "./NavBar.module.scss";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
@@ -10,7 +10,7 @@ import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { IAction, IState } from "types/storeActions";
+import { IState } from "types/storeActions";
 import { removeUser } from "store/actions";
 
 const NavBar: React.FC = () => {
@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
     {
       label: "logout",
       onClick: () => {
-        dispatch<IAction>(removeUser());
+        dispatch(removeUser());
       },
       icon: <FaSignOutAlt />,
     },

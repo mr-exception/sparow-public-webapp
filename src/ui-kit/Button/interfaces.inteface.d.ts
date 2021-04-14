@@ -4,5 +4,6 @@ interface IButtonProps {
   round?: boolean;
   onClick?: () => void;
   loading?: boolean;
+  disabled?: boolean;
   size?: "small" | "medium" | "large";
 }

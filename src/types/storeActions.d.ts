@@ -1,7 +1,7 @@
 import Sparow from "api/Sparow";
 
 // base action definition
-type ActionType = "LOG_IN" | "LOG_OUT" | "SET_SPAROW";
+type ActionType = "LOG_IN" | "LOG_OUT" | "SET_SPAROW" | "UPDATE_USER";
 type IAction = {
   type: ActionType;
   profile?: Profile;

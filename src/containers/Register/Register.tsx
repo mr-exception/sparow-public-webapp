@@ -12,6 +12,7 @@ import { ApiValidationError } from "api/errors/api-validation";
 import { IAction, IInitializedState } from "types/storeActions";
 import { useDispatch, useSelector } from "react-redux";
 import AuthProfile from "api/profile/AuthProfile";
+import { storeUser } from "store/actions";
 const Component: React.FC = () => {
   const dispatch = useDispatch();
   const sparow = useSelector((state: IInitializedState) => state.sparow);
@@ -34,7 +35,7 @@ const Component: React.FC = () => {
         password,
         scopes: ["applications"],
       });
-      dispatch<IAction>({ type: "LOG_IN", profile: result });
+      dispatch(storeUser(result));
       set_loading(false);
     } catch (error) {
       set_loading(false);

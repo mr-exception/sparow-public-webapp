@@ -7,6 +7,7 @@ const Button: React.FC<IButtonProps> = ({
   round,
   onClick,
   loading = false,
+  disabled = false,
   size = "medium",
 }: IButtonProps) => {
   let btn_classes = !round ? `${Styles.button}` : `${Styles.btnRound}`;
@@ -27,7 +28,11 @@ const Button: React.FC<IButtonProps> = ({
   }
 
   return (
-    <button className={btn_classes} onClick={onClick}>
+    <button
+      className={btn_classes}
+      onClick={onClick}
+      disabled={loading || disabled}
+    >
       {loading ? "..." : children}
     </button>
   );
