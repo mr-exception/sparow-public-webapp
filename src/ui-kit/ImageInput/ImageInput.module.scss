@@ -3,7 +3,6 @@
 .container {
   display: flex;
   flex-direction: column;
-
   cursor: pointer;
 }
 
@@ -46,4 +45,9 @@
 
 .image {
   width: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }

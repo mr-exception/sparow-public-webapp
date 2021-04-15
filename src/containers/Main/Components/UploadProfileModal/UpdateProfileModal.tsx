@@ -7,7 +7,6 @@ import ModalFooter from "ui-kit/Modal/ModalFooter";
 import Button from "ui-kit/Button/Botton";
 import ModalBody from "ui-kit/Modal/ModalBody";
 import TextInput from "ui-kit/TextInput/TextInput";
-import ImageInput from "ui-kit/ImageInput/ImageInput";
 import { IUpdateProfileModal } from "./interfaces";
 import { ILoggedInState } from "types/storeActions";
 import Profile from "api/profile/Profile";
@@ -15,6 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Sparow from "api/Sparow";
 import { isEmptyString } from "utils";
 import { setProfile } from "store/actions";
+import { ApiValidationError } from "api/errors/api-validation";
+import ImageInput from "ui-kit/ImageInput/ImageInput";
 const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
   show,
   close,
@@ -29,6 +30,8 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
 
   const [avatar_errors, set_avatar_errors] = useState<string[]>([]);
   const [avatar, set_avatar] = useState<File>();
+  const [cropped_avatar, set_cropped_avatar] = useState<File>();
+
   const [first_name_errors, set_first_name_errors] = useState<string[]>([]);
   const [first_name, set_first_name] = useState(
     !isEmptyString(profile.first_name) ? profile.first_name : ""
@@ -73,7 +76,7 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
     if (!isEmptyString(username)) data.username = username;
     if (!isEmptyString(email)) data.email = email;
     if (!isEmptyString(phone)) data.phone = phone;
-    if (avatar) data.avatar = avatar;
+    if (cropped_avatar) data.avatar = cropped_avatar;
 
     try {
       set_loading(true);
@@ -88,6 +91,30 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
 
       close();
     } catch (error) {
+      if (error instanceof ApiValidationError) {
+        const validationErrors = (error as ApiValidationError).errors;
+        if (validationErrors.hasOwnProperty("username")) {
+          set_username_errors(validationErrors.username);
+        }
+        if (validationErrors.hasOwnProperty("first_name")) {
+          set_first_name_errors(validationErrors.first_name);
+        }
+        if (validationErrors.hasOwnProperty("last_name")) {
+          set_last_name_errors(validationErrors.last_name);
+        }
+        if (validationErrors.hasOwnProperty("password")) {
+          set_password_errors(validationErrors.password);
+        }
+        if (validationErrors.hasOwnProperty("email")) {
+          set_email_errors(validationErrors.email);
+        }
+        if (validationErrors.hasOwnProperty("phone")) {
+          set_phone_errors(validationErrors.phone);
+        }
+        if (validationErrors.hasOwnProperty("avatar")) {
+          set_avatar_errors(validationErrors.avatar);
+        }
+      }
       set_loading(false);
     }
   };
@@ -126,12 +153,13 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
       set_phone_errors(["phone can't be empty"]);
     } else {
     }
-    if (avatar) {
-      if (avatar.size > 300000) {
-        // more than 100kb
-        set_avatar_errors(["avatar file must be less than 100kb"]);
+    if (cropped_avatar) {
+      if (cropped_avatar.size > 250000) {
+        // more than 250kb
+        set_avatar_errors(["avatar file must be less than 250kb"]);
       } else {
       }
+    } else {
     }
   }, [
     username,
@@ -142,6 +170,7 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
     first_name,
     last_name,
     avatar,
+    cropped_avatar,
   ]);
 
   return (
@@ -207,10 +236,15 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
         <Row>
           <Col lg={6} md={6} sm={12} xs={12}>
             <ImageInput
-              onChange={(file) => set_avatar(file)}
+              onChange={(file: File) => set_avatar(file)}
               label="upload avatar"
-              cropToSqure={true}
+              errors={avatar_errors}
               value={avatar ? avatar : profile.avatar}
+              crop={1}
+              onCroped={(file: File) => {
+                set_cropped_avatar(file);
+                // console.log(file);
+              }}
             />
           </Col>
           <Col lg={6} md={6} sm={12} xs={12}>
@@ -227,8 +261,8 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
         <Button
           size="small"
           onClick={submit}
-          // loading={loading}
-          // disabled={!hasError()}
+          loading={loading}
+          disabled={hasError()}
         >
           save
         </Button>

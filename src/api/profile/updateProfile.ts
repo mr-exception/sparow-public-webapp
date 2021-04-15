@@ -31,7 +31,6 @@ export function updateProfile(
     if (data.avatar) {
       formData.append("avatar", data.avatar);
     }
-    console.log(data);
     return sparow.axios
       .post<{ user: IProfile }>(sparow.baseURL + `/profile`, formData, {
         headers: { "Content-Type": "multipart/form-data" },

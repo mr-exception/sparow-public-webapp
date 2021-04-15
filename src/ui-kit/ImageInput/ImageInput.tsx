@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { IImageInputProps } from "./props.inteface";
-import Styles from "./ImageInput.module.scss";
+import React from "react";
+import ImageUrlPreview from "./ImageUrlPreview";
+import ImageCrop from "./ImageCrop";
 
 const ImageInput: React.FC<IImageInputProps> = ({
   value = undefined,
@@ -9,43 +9,48 @@ const ImageInput: React.FC<IImageInputProps> = ({
   },
   label = "label",
   disabled = false,
-  errors,
-  cropToSqure = false,
+  errors = [],
+  crop,
+  onCroped = () => {
+    // do nothing
+  },
 }: IImageInputProps) => {
-  let image = typeof value === "string" ? value : "";
-  if (value instanceof File) {
-    image = URL.createObjectURL(value);
-  }
-  // let fileName = typeof value === "string" ? value : "";
-  // if (value instanceof File) {
-  //   fileName = File.name;
-  // }
-  const fileInput = useRef<HTMLInputElement>(null);
-  return (
-    <div
-      className={Styles.container}
-      onClick={() => {
-        if (fileInput.current) fileInput.current.click();
-      }}
-    >
-      <input
-        hidden
-        type="file"
-        ref={fileInput}
-        onChange={(event) => {
-          if (event.target.files) {
-            if (event.target.files.length > 0) {
-              const file = event.target.files[0];
-              onChange(file);
-            }
-          }
-        }}
+  if (typeof value === "string") {
+    return (
+      <ImageUrlPreview
+        value={value}
+        label={label}
+        errors={errors}
+        disabled={disabled}
+        onChange={onChange}
       />
-      <div className={Styles.imageContainer}>
-        <img className={Styles.image} src={image} />
-      </div>
-      <div className={Styles.input}>{label}</div>
-    </div>
-  );
+    );
+  }
+  if (value instanceof File) {
+    if (crop) {
+      return (
+        <ImageCrop
+          value={value}
+          label={label}
+          errors={errors}
+          disabled={disabled}
+          onChange={onChange}
+          aspect={crop}
+          onCropped={onCroped}
+        />
+      );
+    } else {
+      return (
+        <ImageUrlPreview
+          value={URL.createObjectURL(value)}
+          label={label}
+          errors={errors}
+          disabled={disabled}
+          onChange={onChange}
+        />
+      );
+    }
+  }
+  return null;
 };
 export default ImageInput;
