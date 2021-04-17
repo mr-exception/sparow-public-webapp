@@ -3,15 +3,17 @@ import Application from "../applications/Application";
 import { ISession } from "../interfaces/session";
 
 export default class Session {
-  public id: string | undefined;
+  public id: string;
   public agent: string | undefined;
   public application: Application | undefined;
   public scopes: string[] = [];
+  public current: boolean;
 
   constructor(session: ISession, private sparow: Sparow) {
     this.id = session.id;
     this.agent = session.agent;
     this.scopes = session.scopes;
+    this.current = session.current;
     this.application = session.application
       ? new Application(session.application, sparow)
       : undefined;

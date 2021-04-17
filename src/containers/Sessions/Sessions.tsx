@@ -12,13 +12,18 @@ import TableView from "./components/TableView/TableView";
 const Sessions: React.FC = () => {
   const sparow: Sparow = useSelector((state: ILoggedInState) => state.sparow);
   const [page, set_page] = useState<number>(1);
+  const [page_count, set_page_count] = useState<number>(0);
   const [sessions, set_sessions] = useState<Session[]>([]);
   const [loading, set_loading] = useState<LoadingStatus>("not_loaded");
   const loadSessions = async () => {
     try {
       set_loading("loading");
-      const results = await sparow.allSessions({ page, pageSize: 15 });
+      const results = await sparow.allSessions({
+        page,
+        pageSize: 10,
+      });
       set_sessions(results.data);
+      set_page_count(Math.ceil(results.meta.total / results.meta.per_page));
       set_loading("loaded");
       console.log(results.data);
     } catch (error) {
@@ -37,8 +42,19 @@ const Sessions: React.FC = () => {
           <Card>
             <CardBody>
               {loading === "not_loaded" ? <LoadingView /> : null}
-              {loading === "loading" ? <LoadingView /> : null}
-              {loading === "loaded" ? <TableView sessions={sessions} /> : null}
+              {loading === "loading" && sessions.length === 0 ? (
+                <LoadingView />
+              ) : null}
+              {loading === "loaded" ||
+              (sessions.length > 0 && loading === "loading") ? (
+                <TableView
+                  sessions={sessions}
+                  pageChanged={set_page}
+                  current_page={page}
+                  page_count={page_count}
+                  loading={loading}
+                />
+              ) : null}
             </CardBody>
           </Card>
         </Col>
