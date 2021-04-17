@@ -18,26 +18,32 @@ const MobileMenu: React.FC<IProps> = ({ list }: IProps) => {
   if (visiblity) {
     menuitem = (
       <ul className={Styles.menuContainer}>
-        {list.map((item, index) => (
-          <RouteLink
-            key={index}
-            to={item.url}
-            style={{
-              color: "#8a8989",
-              textDecoration: "none",
-              display: "flex",
-            }}
-          >
+        {list.map((item, index) => {
+          const content = (
             <li className={Styles.menuItem} key={index}>
-              {item.hasOwnProperty("icon") ? (
-                <span className={Styles.menuItemIcon}>{item.icon}</span>
-              ) : (
-                ""
-              )}
-              {item.label}
+              <div className={Styles.text}>{item.label}</div>
+              {item.icon ? <div className={Styles.icon}>{item.icon}</div> : ""}
             </li>
-          </RouteLink>
-        ))}
+          );
+          if (item.url)
+            return (
+              <RouteLink
+                key={index}
+                to={item.url}
+                style={{ color: "#8a8989", textDecoration: "none" }}
+              >
+                {content}
+              </RouteLink>
+            );
+          if (item.onClick) {
+            return (
+              <div key={index} onClick={item.onClick}>
+                {content}
+              </div>
+            );
+          }
+          return null;
+        })}
       </ul>
     );
     menuIcon = <MdClose />;
@@ -48,7 +54,7 @@ const MobileMenu: React.FC<IProps> = ({ list }: IProps) => {
 
   return (
     <>
-      <div onClick={toggleMenu} className="onlyMobile">
+      <div onClick={toggleMenu} className="only-mobile">
         <MenuBar>{menuIcon}</MenuBar>
       </div>
       {menuitem}

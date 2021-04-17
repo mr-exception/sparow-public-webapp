@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Styles from "./DropDown.module.scss";
 import { Link as RouteLink } from "react-router-dom";
-interface IDropDownProps {
-  children: any;
-  list: IListItem[];
-  onClick?: () => void;
-}
 
 const DropDown: React.FC<IDropDownProps> = ({
   children,
   list,
+  classNames = "",
 }: IDropDownProps) => {
   const [visiblity, setVisiblity] = useState(false);
   let dropDownContainer;
@@ -65,7 +61,7 @@ const DropDown: React.FC<IDropDownProps> = ({
   return (
     <>
       {overlay}
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative" }} className={classNames}>
         <div onClick={toggleDropDown}>{children}</div>
         {dropDownContainer}
       </div>

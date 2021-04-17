@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
   const avatar = (
     <>
       <MobileMenu list={listItems} />
-      <DropDown list={listItems}>
+      <DropDown list={listItems} classNames="only-desktop">
         <Avatar
           size="45px"
           round={true}

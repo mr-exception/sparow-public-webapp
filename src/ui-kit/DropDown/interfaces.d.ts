@@ -4,3 +4,9 @@ interface IListItem {
   onClick?: () => void;
   icon?: any;
 }
+interface IDropDownProps {
+  children: any;
+  list: IListItem[];
+  onClick?: () => void;
+  classNames?: string;
+}

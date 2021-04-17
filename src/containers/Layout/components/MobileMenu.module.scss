@@ -37,6 +37,14 @@
     color: rgba(75, 85, 99, 1);
     background-color: #f9fafb;
   }
+  .text {
+    flex: 2;
+    text-align: left;
+  }
+  .icon {
+    flex: 1;
+    text-align: right;
+  }
 }
 
 .menuItemIcon {
