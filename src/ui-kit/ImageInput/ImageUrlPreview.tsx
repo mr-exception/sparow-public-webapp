@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Image from "ui-kit/Image/Image";
 import Styles from "./ImageInput.module.scss";
 
 const ImageUrlPreview: React.FC<IUrlPreviewProps> = ({
@@ -30,7 +31,7 @@ const ImageUrlPreview: React.FC<IUrlPreviewProps> = ({
         }}
       />
       <div className={Styles.imageContainer}>
-        <img className={Styles.image} src={value} />
+        <Image className={Styles.image} source={value} />
       </div>
       <div className={Styles.input}>{label}</div>
       <ul className={Styles.error}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,9 +8,11 @@ import {
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
+// containers
 import Layout from "./containers/Layout/Layout";
-import Profile from "./containers/Layout/Profile";
+import Sessions from "./containers/Sessions/Sessions";
 import Main from "containers/Main/Main";
+// extra imports
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { IState } from "types/storeActions";
 import { setSparow, storeUser } from "store/actions";
@@ -18,6 +20,7 @@ import Sparow from "api/Sparow";
 import ProfileClass from "api/profile/Profile";
 const Component: React.FC = () => {
   const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
+  const [finished_init, set_finished_init] = useState(false);
   const dispatch = useDispatch();
 
   // initialize auth informations
@@ -41,9 +44,13 @@ const Component: React.FC = () => {
 
       const profile = new ProfileClass(user, sparow);
       dispatch(storeUser(profile));
+      set_finished_init(true);
     }
   }, []);
 
+  if (!finished_init) {
+    return <div>loading...</div>;
+  }
   if (!loggedIn) {
     return (
       <Router>
@@ -60,7 +67,7 @@ const Component: React.FC = () => {
           <Route path="/reset-password">
             <ResetPassword />
           </Route>
-          <Redirect from="/" to="/login" />
+          <Redirect to="/login" />
         </Switch>
       </Router>
     );
@@ -73,17 +80,17 @@ const Component: React.FC = () => {
               <Main />
             </Layout>
           </Route>
-          <Route path="/profile">
+          <Route path="/sessions">
             <Layout
               location={[
                 { name: "Home", route: "/home" },
-                { name: "Profile", route: "/profile" },
+                { name: "Sessions", route: "/sessions" },
               ]}
             >
-              <Profile />
+              <Sessions />
             </Layout>
           </Route>
-          <Redirect from="/" to="/home" />
+          <Redirect to="/home" />
         </Switch>
       </Router>
     );

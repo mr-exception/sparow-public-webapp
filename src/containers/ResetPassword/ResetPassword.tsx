@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardHeader, Card } from "ui-kit/Card";
 import Col from "ui-kit/Col";
-import Image from "ui-kit/Image";
+import Image from "ui-kit/Image/Image";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
 import ChangePasswordStep from "./ChangePasswordStep";

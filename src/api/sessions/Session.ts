@@ -11,6 +11,7 @@ export default class Session {
   constructor(session: ISession, private sparow: Sparow) {
     this.id = session.id;
     this.agent = session.agent;
+    this.scopes = session.scopes;
     this.application = session.application
       ? new Application(session.application, sparow)
       : undefined;

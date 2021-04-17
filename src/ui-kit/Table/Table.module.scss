@@ -1,0 +1,23 @@
+.table {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+.header {
+  background: #eee;
+  th:first-child {
+    border-top-left-radius: 4px;
+  }
+  th:last-child {
+    border-top-right-radius: 4px;
+  }
+  th {
+    padding: 15px 5px;
+  }
+}
+.row {
+  td {
+    border-bottom: 1px solid #eee;
+    padding: 10px 5px;
+  }
+}

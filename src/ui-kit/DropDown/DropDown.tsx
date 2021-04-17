@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./DropDown.module.scss";
-import { Link as RouteLink } from "react-router-dom";
+import { Link as RouteLink, useLocation } from "react-router-dom";
 
 const DropDown: React.FC<IDropDownProps> = ({
   children,
   list,
   classNames = "",
 }: IDropDownProps) => {
-  const [visiblity, setVisiblity] = useState(false);
+  const [visiblity, set_visibility] = useState(false);
   let dropDownContainer;
   let overlay;
 
+  const location = useLocation();
+  useEffect(() => {
+    set_visibility(false);
+  }, [location]);
+
   const toggleDropDown = () =>
-    !visiblity ? setVisiblity(true) : setVisiblity(false);
-  const handleOutSideClick = () => setVisiblity(false);
+    !visiblity ? set_visibility(true) : set_visibility(false);
+  const handleOutSideClick = () => set_visibility(false);
 
   if (visiblity) {
     dropDownContainer = (
@@ -55,7 +60,7 @@ const DropDown: React.FC<IDropDownProps> = ({
   }
 
   // React.useEffect(() => {
-  //   setVisiblity(false);
+  //   set_visibility(false);
   // }, [location]);
 
   return (

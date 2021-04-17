@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Image from "ui-kit/Image/Image";
 import Styles from "./Avatar.module.scss";
 
 const Avatar: React.FC<IAvatarProps> = ({
@@ -20,9 +21,9 @@ const Avatar: React.FC<IAvatarProps> = ({
   if (src) {
     return (
       <div className={avatar_classes} style={{ ...style, maxWidth: size }}>
-        <img
+        <Image
           className={`${Styles.avatarImage} ${Styles.round}`}
-          src={src}
+          source={src}
           style={{ maxWidth: size }}
         />
       </div>

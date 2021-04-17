@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Styles from "./NavBar.module.scss";
 import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
-import Image from "ui-kit/Image";
 import Link from "ui-kit/Link";
 import DropDown from "ui-kit/DropDown/DropDown";
 import Avatar from "ui-kit/Avatar/Avatar";
@@ -12,6 +11,7 @@ import MobileMenu from "./MobileMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { ILoggedInState, IState } from "types/storeActions";
 import { removeUser } from "store/actions";
+import Image from "ui-kit/Image/Image";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();

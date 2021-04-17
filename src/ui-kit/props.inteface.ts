@@ -66,12 +66,6 @@ export interface ISpaceProps {
   height?: number | string;
   width?: number | string;
 }
-export interface IImageProps {
-  source: any;
-  alt?: string;
-  style?: any;
-  className?: string;
-}
 
 export interface ILinkProps {
   children?: any;

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Styles from "./ImageInput.module.scss";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/lib/ReactCrop.scss";
+import Image from "ui-kit/Image/Image";
 
 function getCroppedImg(
   image: HTMLImageElement,
@@ -95,7 +96,7 @@ const ImageCrop: React.FC<IImagePreviewProps> = ({
   return (
     <div className={Styles.container}>
       <div className={Styles.imageContainer}>
-        <img src={image} ref={img} style={{ display: "none" }} />
+        <Image source={image} ref={img} style={{ display: "none" }} />
         <ReactCrop
           src={image}
           crop={crop}

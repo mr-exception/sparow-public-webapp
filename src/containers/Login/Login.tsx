@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "ui-kit/Button/Botton";
 import { Card, CardHeader, CardBody, CardFooter } from "ui-kit/Card";
 import Col from "ui-kit/Col";
-import Image from "ui-kit/Image";
+import Image from "ui-kit/Image/Image";
 import Row from "ui-kit/Row";
 import Space from "ui-kit/Space";
 import TextInput from "ui-kit/TextInput/TextInput";
