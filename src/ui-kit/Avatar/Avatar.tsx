@@ -19,10 +19,7 @@ const Avatar: React.FC<IAvatarProps> = ({
     .join(" ");
   if (src) {
     return (
-      <div
-        className={avatar_classes}
-        style={{ width: size, height: size, ...style }}
-      >
+      <div className={avatar_classes} style={{ ...style }}>
         <img className={`${Styles.avatarImage} ${Styles.round}`} src={src} />
       </div>
     );
