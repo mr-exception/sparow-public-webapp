@@ -10,12 +10,12 @@ import Wrapper from "ui-kit/Wrapper";
 import { FaSignOutAlt } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "types/storeActions";
+import { ILoggedInState, IState } from "types/storeActions";
 import { removeUser } from "store/actions";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
-  const profile = useSelector((state: IState) => state.profile);
+  const profile = useSelector((state: ILoggedInState) => state.profile);
   const listItems: IListItem[] = [
     // { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
@@ -41,20 +41,19 @@ const NavBar: React.FC = () => {
   //   return () => window.removeEventListener("resize", handleResize);
   // });
 
-  let avatar;
-
-  if (mobile) avatar = <MobileMenu list={listItems} />;
-  else {
-    avatar = (
+  const avatar = (
+    <>
+      <MobileMenu list={listItems} />
       <DropDown list={listItems}>
         <Avatar
           size="45px"
           round={true}
-          caption={profile?.username || "No Name"}
+          src={profile.avatar}
+          caption={profile.username || "No Name"}
         />
       </DropDown>
-    );
-  }
+    </>
+  );
   return (
     <Wrapper injectedClass={Styles.nav}>
       <Row

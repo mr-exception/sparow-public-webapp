@@ -1,6 +1,6 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
-.menuContainer{
+.menuContainer {
   position: absolute;
   top: 50px;
   list-style: none;
@@ -12,9 +12,11 @@
   flex-wrap: wrap;
   padding: 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  z-index: 1;
 }
 
-.menuItem{
+.menuItem {
   display: flex;
   width: 100%;
   padding: 14px 16px;
@@ -27,16 +29,17 @@
   border-color: transparent;
   border-left-width: 4px;
   font-size: 14px;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  &:hover{
+  &:hover {
     color: rgba(75, 85, 99, 1);
     background-color: #f9fafb;
   }
 }
 
-.menuItemIcon{
+.menuItemIcon {
   line-height: 0;
   margin-top: 3px;
   margin-right: 5px;

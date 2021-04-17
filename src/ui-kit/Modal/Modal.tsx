@@ -9,22 +9,11 @@ const Modal: React.FC<IModalProps> = ({
   size = "medium",
 }: IModalProps) => {
   if (!show) return null;
-  const calculateWidth = (): string => {
-    switch (size) {
-      case "small":
-        return "30vw";
-      case "medium":
-        return "50vw";
-      case "large":
-        return "70vw";
-    }
-  };
 
   return (
     <div className={Styles.modal} onClick={onClose}>
       <div
-        className={Styles.modalContent}
-        style={{ width: calculateWidth() }}
+        className={`${Styles.modalContent} ${Styles[size]}`}
         onClick={(e) => {
           e.stopPropagation();
         }}

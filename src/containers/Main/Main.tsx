@@ -33,7 +33,7 @@ const Main: React.FC = () => {
                   />
                 </Col>
                 <FaEdit
-                  style={{ position: "absolute", bottom: 0, right: 0 }}
+                  style={{ position: "absolute", right: 0, top: 0 }}
                   size={20}
                   onClick={() => {
                     set_show_profile_edit(true);

@@ -1,5 +1,28 @@
 @import "../../variables.scss";
 
+// modal width rules
+.small {
+  width: 30vw;
+}
+.medium {
+  width: 50vw;
+}
+.large {
+  width: 80vw;
+}
+@media screen and (max-width: 640px) {
+  .small {
+    width: 50vw;
+  }
+  .medium {
+    width: 90vw;
+  }
+  .large {
+    width: 95vw;
+  }
+}
+
+// modal elements
 .modal {
   position: absolute;
   left: 0;

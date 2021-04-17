@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Styles from "./Avatar.module.scss";
 
 const Avatar: React.FC<IAvatarProps> = ({
@@ -20,7 +20,11 @@ const Avatar: React.FC<IAvatarProps> = ({
   if (src) {
     return (
       <div className={avatar_classes} style={{ ...style }}>
-        <img className={`${Styles.avatarImage} ${Styles.round}`} src={src} />
+        <img
+          className={`${Styles.avatarImage} ${Styles.round}`}
+          src={src}
+          style={{ maxWidth: size }}
+        />
       </div>
     );
   }
