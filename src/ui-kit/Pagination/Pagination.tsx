@@ -5,18 +5,38 @@ import Styles from "./Pagination.module.scss";
 
 const Pagination: React.FC<IPaginationProps> = ({
   pageChanged,
-  total_page,
+  page_count,
   current_page,
   loading,
 }: IPaginationProps) => {
   const [last_action, set_last_action] = useState<
     "prev" | "next" | "first" | "last"
   >();
+
+  const isPrevButtonDisabled = (): boolean => {
+    if (current_page === 1) return true;
+    return false;
+  };
+  const isFirstButtonDisabled = (): boolean => {
+    if (current_page === 1) return true;
+    if (page_count === 1) return true;
+    return false;
+  };
+  const isNextButtonDisabled = (): boolean => {
+    if (current_page === page_count) return true;
+    return false;
+  };
+  const isLastButtonDisabled = (): boolean => {
+    if (current_page === page_count) return true;
+    if (page_count === 1) return true;
+    return false;
+  };
   return (
     <Row>
       <Col col={12} className={Styles.container}>
         <button
           className={Styles.button}
+          disabled={isFirstButtonDisabled()}
           onClick={() => {
             pageChanged(1);
             set_last_action("first");
@@ -26,6 +46,7 @@ const Pagination: React.FC<IPaginationProps> = ({
         </button>
         <button
           className={Styles.button}
+          disabled={isPrevButtonDisabled()}
           onClick={() => {
             pageChanged(current_page - 1);
             set_last_action("prev");
@@ -34,10 +55,11 @@ const Pagination: React.FC<IPaginationProps> = ({
           {loading && last_action === "prev" ? "..." : "<"}
         </button>
         <div className={Styles.pageNumber}>
-          {current_page}/{total_page}
+          {current_page}/{page_count}
         </div>
         <button
           className={Styles.button}
+          disabled={isNextButtonDisabled()}
           onClick={() => {
             pageChanged(current_page + 1);
             set_last_action("next");
@@ -47,8 +69,9 @@ const Pagination: React.FC<IPaginationProps> = ({
         </button>
         <button
           className={Styles.button}
+          disabled={isLastButtonDisabled()}
           onClick={() => {
-            pageChanged(total_page);
+            pageChanged(page_count);
             set_last_action("last");
           }}
         >

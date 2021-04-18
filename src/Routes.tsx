@@ -18,6 +18,7 @@ import { IState } from "types/storeActions";
 import { setSparow, storeUser } from "store/actions";
 import Sparow from "api/Sparow";
 import ProfileClass from "api/profile/Profile";
+import { AuthError } from "api/errors/auth";
 const Component: React.FC = () => {
   const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
   const [finished_init, set_finished_init] = useState(false);
@@ -36,15 +37,23 @@ const Component: React.FC = () => {
     const user_string = localStorage.getItem("user");
     const access_token = localStorage.getItem("auth_token");
     if (user_string && access_token) {
+      // set profile
       const user = JSON.parse(user_string) as IProfile;
-
       sparow.setProfile(new ProfileClass(user, sparow), access_token);
-
-      localStorage.setItem("user", JSON.stringify(user));
-
-      const profile = new ProfileClass(user, sparow);
-      dispatch(storeUser(profile));
-      set_finished_init(true);
+      // check if access token is valid
+      sparow
+        .getProfile()
+        .then((profile: ProfileClass) => {
+          localStorage.setItem("user", JSON.stringify(profile.jsonObject()));
+          sparow.setProfile(profile, access_token);
+          dispatch(storeUser(profile));
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          set_finished_init(true);
+        });
     }
   }, []);
 

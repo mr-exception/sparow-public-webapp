@@ -15,31 +15,25 @@ import Image from "ui-kit/Image/Image";
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
-  const profile = useSelector((state: ILoggedInState) => state.profile);
+  const { profile, sparow } = useSelector((state: ILoggedInState) => state);
   const listItems: IListItem[] = [
     // { label: "profile", url: "/profile" },
     { label: "sessions", url: "/sessions" },
     { label: "applications", url: "/applications" },
     {
       label: "logout",
-      onClick: () => {
-        dispatch(removeUser());
+      onClick: async () => {
+        try {
+          await sparow.logout();
+        } catch (error) {
+          console.log(error);
+        } finally {
+          dispatch(removeUser());
+        }
       },
       icon: <FaSignOutAlt />,
     },
   ];
-  const [mobile, setMobile] = useState(() =>
-    window.innerWidth < 640 ? true : false
-  );
-
-  // useEffect(() => {
-  //   const handleResize = () =>
-  //     window.innerWidth < 640 ? setMobile(true) : setMobile(false);
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => window.removeEventListener("resize", handleResize);
-  // });
 
   const avatar = (
     <>

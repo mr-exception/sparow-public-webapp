@@ -12,25 +12,43 @@ import ModalBody from "ui-kit/Modal/ModalBody";
 import ModalFooter from "ui-kit/Modal/ModalFooter";
 import Button from "ui-kit/Button/Botton";
 import Sparow from "api/Sparow";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ILoggedInState } from "types/storeActions";
+import { updateSessions } from "store/actions";
 const TableView: React.FC<ISessionsTableViewProps> = ({
-  sessions,
-  current_page,
-  pageChanged,
-  page_count,
   loading,
+  pageChanged,
 }: ISessionsTableViewProps) => {
+  const dispatch = useDispatch();
+
   const sparow: Sparow = useSelector((state: ILoggedInState) => state.sparow);
   const [deleting_session, set_deleting_session] = useState<boolean>(false);
   const [selected_session, set_selected_session] = useState<Session>();
 
+  // sessions state
+  const { page_count, current_page, data } = useSelector(
+    (state: ILoggedInState) => state.sessions
+  );
+  // terminate function
   const [terminating, set_terminating] = useState<boolean>(false);
   const terminateSession = async () => {
     set_terminating(true);
     try {
       if (selected_session) {
+        // delete the selection session
         await sparow.deleteSession(selected_session.id);
+        // reload the sessions list
+        const results = await sparow.allSessions({
+          page: current_page,
+          pageSize: 10,
+        });
+        dispatch(
+          updateSessions({
+            data: results.data,
+            current_page: results.meta.current_page,
+            page_count: Math.ceil(results.meta.total / 10),
+          })
+        );
       }
       set_deleting_session(false);
       set_selected_session(undefined);
@@ -59,7 +77,7 @@ const TableView: React.FC<ISessionsTableViewProps> = ({
             { key: "scopes", label: "scopes", width: "40%" },
             { key: "menu", label: "", width: "10%" },
           ]}
-          rows={sessions.map((session, index) => {
+          rows={data.map((session, index) => {
             const application_name = session.application
               ? session.application.title
               : "direct access";
@@ -87,7 +105,7 @@ const TableView: React.FC<ISessionsTableViewProps> = ({
           pageChanged={(value) => {
             pageChanged(value);
           }}
-          total_page={page_count}
+          page_count={page_count}
         />
       </Col>
       <Modal
@@ -112,9 +130,7 @@ const TableView: React.FC<ISessionsTableViewProps> = ({
             size="small"
             loading={terminating}
             disabled={terminating}
-            onClick={() => {
-              terminateSession();
-            }}
+            onClick={terminateSession}
           >
             yes
           </Button>

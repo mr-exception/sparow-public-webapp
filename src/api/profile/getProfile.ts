@@ -6,8 +6,8 @@ import { catchNotFoundError } from "../errors/not-found";
 import Profile from "./Profile";
 export function getProfile(sparow: Sparow): Promise<Profile> {
   return sparow.axios
-    .get<IProfile>(sparow.baseURL + `/profile`)
-    .then((response) => new Profile(response.data, sparow))
+    .get<{ user: IProfile }>(sparow.baseURL + `/profile`)
+    .then((response) => new Profile(response.data.user, sparow))
     .catch(catchApiValidationError)
     .catch(catchNotFoundError)
     .catch((error) => catchAuthError(error, sparow.authError$))

@@ -3,17 +3,23 @@ import Col from "ui-kit/Col";
 import Row from "ui-kit/Row";
 import Wrapper from "ui-kit/Wrapper";
 import { Card, CardBody } from "ui-kit/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ILoggedInState } from "types/storeActions";
 import Sparow from "api/Sparow";
 import Session from "api/sessions/Session";
 import LoadingView from "./components/LoadingView/LoadingView";
 import TableView from "./components/TableView/TableView";
+import { updateSessions } from "store/actions";
 const Sessions: React.FC = () => {
+  const dispatch = useDispatch();
   const sparow: Sparow = useSelector((state: ILoggedInState) => state.sparow);
-  const [page, set_page] = useState<number>(1);
-  const [page_count, set_page_count] = useState<number>(0);
-  const [sessions, set_sessions] = useState<Session[]>([]);
+  const page = useSelector(
+    (state: ILoggedInState) => state.sessions.current_page
+  );
+  const sessions = useSelector((state: ILoggedInState) => state.sessions.data);
+  const page_count = useSelector(
+    (state: ILoggedInState) => state.sessions.page_count
+  );
   const [loading, set_loading] = useState<LoadingStatus>("not_loaded");
   const loadSessions = async () => {
     try {
@@ -22,10 +28,13 @@ const Sessions: React.FC = () => {
         page,
         pageSize: 10,
       });
-      set_sessions(results.data);
-      set_page_count(Math.ceil(results.meta.total / results.meta.per_page));
+      dispatch(
+        updateSessions({
+          data: results.data,
+          page_count: Math.ceil(results.meta.total / results.meta.per_page),
+        })
+      );
       set_loading("loaded");
-      console.log(results.data);
     } catch (error) {
       console.log(error);
       set_loading("error");
@@ -35,6 +44,7 @@ const Sessions: React.FC = () => {
   useEffect(() => {
     loadSessions();
   }, [page]);
+  console.log(sessions);
   return (
     <Wrapper>
       <Row align="center" verticalAlign="center">
@@ -49,9 +59,9 @@ const Sessions: React.FC = () => {
               (sessions.length > 0 && loading === "loading") ? (
                 <TableView
                   sessions={sessions}
-                  pageChanged={set_page}
-                  current_page={page}
-                  page_count={page_count}
+                  pageChanged={(current_page) => {
+                    dispatch(updateSessions({ current_page }));
+                  }}
                   loading={loading}
                 />
               ) : null}

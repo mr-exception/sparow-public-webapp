@@ -1,4 +1,5 @@
 import Profile from "api/profile/Profile";
+import Session from "api/sessions/Session";
 import Sparow from "api/Sparow";
 import { IAction } from "types/storeActions";
 
@@ -23,4 +24,12 @@ export const setSparow = (sparow: Sparow): IAction => {
 // update profile information
 export const setProfile = (profile: Profile): IAction => {
   return { type: "UPDATE_USER", profile };
+};
+
+export const updateSessions = (sessions: {
+  data?: Session[];
+  current_page?: number;
+  page_count?: number;
+}): IAction => {
+  return { type: "UPDATE_SESSIONS", sessions };
 };
