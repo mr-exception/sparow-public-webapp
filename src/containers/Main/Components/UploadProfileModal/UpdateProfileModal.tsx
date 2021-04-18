@@ -243,7 +243,6 @@ const UpdateProfileModal: React.FC<IUpdateProfileModal> = ({
               crop={1}
               onCroped={(file: File) => {
                 set_cropped_avatar(file);
-                // console.log(file);
               }}
             />
           </Col>

@@ -33,7 +33,7 @@ const Component: React.FC = () => {
         email,
         phone,
         password,
-        scopes: ["applications"],
+        scopes: ["applications", "info", "sessions", "payment"],
       });
       dispatch(storeUser(result));
       set_loading(false);

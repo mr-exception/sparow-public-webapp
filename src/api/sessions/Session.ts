@@ -8,22 +8,33 @@ export default class Session {
   public application: Application | undefined;
   public scopes: string[] = [];
   public current: boolean;
+  public ip: string;
+  public last_request: Date;
 
   constructor(session: ISession, private sparow: Sparow) {
     this.id = session.id;
     this.agent = session.agent;
     this.scopes = session.scopes;
     this.current = session.current;
+    this.last_request = new Date(session.last_request * 1000);
+    this.ip = session.ip;
     this.application = session.application
       ? new Application(session.application, sparow)
       : undefined;
   }
-  /**
-   * deletes this session
-   */
-  public delete(): Promise<boolean> {
-    if (this.id) return this.sparow.deleteSession(this.id);
-    else return new Promise(() => false);
+  public getIdCheckSum(): string {
+    return this.id.substr(this.id.length - 10);
+  }
+  public getApplicationTitle(): string {
+    return this.application ? this.application.title : "direct access";
+  }
+  public getLastRequestString(): string {
+    const Y = this.last_request.getFullYear();
+    const M = this.last_request.getMonth();
+    const D = this.last_request.getDay();
+    const h = this.last_request.getHours();
+    const m = this.last_request.getMinutes();
+    return `${Y}/${M}/${D} ${h}:${m}`;
   }
   /**
    * converts this object to string

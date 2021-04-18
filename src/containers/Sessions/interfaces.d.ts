@@ -1,7 +1,11 @@
 import Session from "api/sessions/Session";
 
-interface ISessionsTableViewProps {
+interface ISessionsResultViewProps {
   sessions: Session[];
   pageChanged: (value: number) => void;
   loading: LoadingStatus;
+}
+
+interface ISessionRowProps {
+  session: Session;
 }

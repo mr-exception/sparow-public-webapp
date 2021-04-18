@@ -15,7 +15,9 @@ const Table: React.FC<ITableProps> = ({ headers, rows }: ITableProps) => {
           const cells: any[] = [];
           headers.forEach((header) => {
             cells.push(
-              <td style={{ width: header.width }}>{row[header.key]}</td>
+              <td style={{ width: header.width }} key={header.key}>
+                {row[header.key]}
+              </td>
             );
           });
           return (

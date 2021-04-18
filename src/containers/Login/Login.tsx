@@ -11,7 +11,7 @@ import Styles from "./Login.module.scss";
 import { ApiValidationError } from "api/errors/api-validation";
 import { AuthError } from "api/errors/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { IAction, IInitializedState } from "types/storeActions";
+import { IInitializedState } from "types/storeActions";
 import { storeUser } from "store/actions";
 import AuthProfile from "api/profile/AuthProfile";
 const Component: React.FC = () => {

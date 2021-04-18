@@ -13,4 +13,6 @@ export interface ISession {
   agent: string;
   scopes: string[];
   current: boolean;
+  ip: string;
+  last_request: number;
 }

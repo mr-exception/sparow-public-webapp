@@ -1,6 +1,6 @@
 import React from "react";
 import Col from "ui-kit/Col";
-import Styles from "./Modal.module.scss";
+import Styles from "./Styles.module.scss";
 
 const ModalBody: React.FC<IModalBodyProps> = ({
   children,

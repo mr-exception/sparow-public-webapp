@@ -1,0 +1,48 @@
+.badge {
+  margin: 0px 5px;
+}
+/*
+    colors for badge. it's not related or based
+    on the project color palette
+*/
+.color0 {
+  background: #3993dd;
+  color: white;
+}
+.color1 {
+  background: #41292c;
+  color: white;
+}
+.color2 {
+  background: #084c61;
+  color: white;
+}
+.color3 {
+  background: #2ab7ca;
+  color: white;
+}
+.color4 {
+  background: #e3879e;
+  color: black;
+}
+.color5 {
+  background: #688e26;
+  color: white;
+}
+
+// size classes
+.small {
+  padding: 3px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.medium {
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.large {
+  padding: 7px;
+  border-radius: 8px;
+  font-size: 14px;
+}

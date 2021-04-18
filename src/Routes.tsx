@@ -19,6 +19,7 @@ import { setSparow, storeUser } from "store/actions";
 import Sparow from "api/Sparow";
 import ProfileClass from "api/profile/Profile";
 import { AuthError } from "api/errors/auth";
+import { getUserAgent } from "utils";
 const Component: React.FC = () => {
   const loggedIn = useSelector((state: IState) => state.loggedIn, shallowEqual);
   const [finished_init, set_finished_init] = useState(false);
@@ -30,7 +31,7 @@ const Component: React.FC = () => {
     const sparow = new Sparow(
       "https://core.sparow.salimon.ir/api",
       "ws://salimon.ir:5003",
-      "webapp"
+      getUserAgent()
     );
     dispatch(setSparow(sparow));
     // get user information from storage
@@ -54,6 +55,8 @@ const Component: React.FC = () => {
         .finally(() => {
           set_finished_init(true);
         });
+    } else {
+      set_finished_init(true);
     }
   }, []);
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import Col from "ui-kit/Col";
-import Styles from "./Modal.module.scss";
+import Styles from "./Styles.module.scss";
 
 const ModalHeader: React.FC<IModalHeaderProps> = ({
   children,
